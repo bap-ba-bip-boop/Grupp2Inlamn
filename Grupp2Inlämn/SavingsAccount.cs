@@ -11,8 +11,14 @@ namespace Grupp2Inlämn
         private string AccountType;
         private int Kontonummer;
 
-        public void deposit() { }
-        public void withdraw() { }
+        public void deposit() 
+        {
+        //kod för deposit
+        }
+        public void withdraw() 
+        {
+        //kod för withdrawl
+        }
         public void getAccountNum() { }
         public void getInterest() { }
         public void getInfo() { }
