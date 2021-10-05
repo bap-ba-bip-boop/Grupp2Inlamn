@@ -6,26 +6,30 @@ namespace Grupp2Inlämn
 {
     class SavingsAccount
     {
+        //instansvariabel
         private double Amount;
         private double Interest;
         private string AccountType;
         private int AccountNr;
+
+        //klassvariabel
+        private static int AccountPool = 1001;
 
         public void deposit(double depositAmount) 
         {
             //kod deposit
             this.Amount += depositAmount;
             Console.WriteLine("You deposited {0}$", depositAmount);
-            Console.WriteLine("Your current saldo is now {0}$", Saldo);
+            Console.WriteLine("Your current saldo is now {0}$", this.Amount);
         }
         public void withdrawl(double withdrawlAmount) 
         {
             //kod för withdrawl
             this.Amount -= withdrawlAmount;
             Console.WriteLine("You withdrew {0}$", withdrawlAmount);
-            Console.WriteLine("Your current saldo is now {0}$", Saldo);
+            Console.WriteLine("Your current saldo is now {0}$", this.Amount);
         }
-        public int getAccountNum()
+        public int getAccountID()
         {
             //returnar AccountNr till användaren(i detta fall BankLogic)
             return this.AccountNr;
@@ -39,12 +43,12 @@ namespace Grupp2Inlämn
         {
             //returnerar parametrarna i följande ordning
             //(kontonummer, saldo, kontotyp, räntesats).
-            return this.AccountNr + ", " + this.Amount + ", " + this.AccountType + ", " + this.Interest;
+            return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + ", Account Type: " + this.AccountType + ", Interest Rate: " + this.Interest + " %";
         }
 
         public SavingsAccount()
         {
-            this.AccountNr = 1001;
+            this.AccountNr = AccountPool++; ;
             this.Amount = 1000.0;
             this.AccountType = "Sparkonto";
             this.Interest = 1.0;
