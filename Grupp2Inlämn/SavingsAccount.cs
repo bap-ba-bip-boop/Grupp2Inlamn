@@ -11,8 +11,16 @@ namespace Grupp2Inlämn
         private string AccountType;
         private int AccountNr;
 
-        public void deposit() { }//Pierre o niklas
-        public void withdraw() { }//Pierre o niklas
+        public void deposit(double depositAmount) 
+        {
+            //kod för deposit
+            this.Amount += depositAmount;
+        }
+        public void withdraw(double withdrawAmount) 
+        {
+            //kod för withdrawl
+            this.Amount -= withdrawAmount;
+        }
         public int getAccountNum()
         {
             //returnar AccountNr till användaren(i detta fall BankLogic)
