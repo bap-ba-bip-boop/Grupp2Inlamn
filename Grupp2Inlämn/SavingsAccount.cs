@@ -19,15 +19,15 @@ namespace Grupp2Inlämn
         {
             //kod deposit
             this.Amount += depositAmount;
-            Console.WriteLine("You deposited {0}$", depositAmount);
-            Console.WriteLine("Your current saldo is now {0}$", this.Amount);
+            Console.WriteLine("You deposited {0}kr", depositAmount);
+            Console.WriteLine("Your current saldo is now {0}kr", this.Amount);
         }
         public void withdrawl(double withdrawlAmount) 
         {
             //kod för withdrawl
             this.Amount -= withdrawlAmount;
-            Console.WriteLine("You withdrew {0}$", withdrawlAmount);
-            Console.WriteLine("Your current saldo is now {0}$", this.Amount);
+            Console.WriteLine("You withdrew {0}kr", withdrawlAmount);
+            Console.WriteLine("Your current saldo is now {0}kr", this.Amount);
         }
         public int getAccountID()
         {

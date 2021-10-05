@@ -10,13 +10,13 @@ namespace Grupp2Inlämn
             Customer d = new Customer();
 
             Console.WriteLine(c.ChangeName("Jane Doe"));
-            c.addAccount();//1001
-            c.addAccount();//1002
+            c.addAccount();
+            c.addAccount();
             Console.WriteLine(c.GetInfoOnAllAccounts());
 
-            d.addAccount();//1001? 1003
-            d.addAccount();//1002? 1004
-            d.addAccount();//1003? 1005
+            d.addAccount();
+            d.addAccount();
+            d.addAccount();
             Console.WriteLine(d.GetInfoOnAllAccounts());
 
             Console.WriteLine(d.GetInfo());
