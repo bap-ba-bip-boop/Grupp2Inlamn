@@ -13,13 +13,17 @@ namespace Grupp2Inlämn
 
         public void deposit(double depositAmount) 
         {
-            //kod för deposit
+            //kod deposit
             this.Saldo += depositAmount;
+            Console.WriteLine("You deposited {0}$", depositAmount);
+            Console.WriteLine("Your current saldo is now {0}$", Saldo);
         }
-        public void withdraw(double withdrawAmount) 
+        public void withdrawl(double withdrawlAmount) 
         {
-            //kod för withdrawl
-            this.Saldo -= withdrawAmount;
+            //kod withdrawl
+            this.Saldo -= withdrawlAmount;
+            Console.WriteLine("You withdrew {0}$", withdrawlAmount);
+            Console.WriteLine("Your current saldo is now {0}$", Saldo);
         }
         public void getAccountNum() { }
         public void getInterest() { }
