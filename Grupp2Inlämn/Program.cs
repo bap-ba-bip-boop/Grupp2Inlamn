@@ -6,8 +6,8 @@ namespace Grupp2Inlämn
     {
         static void Main(string[] args)
         {
-            //master
-            Console.WriteLine("Hello World!");
+            SavingsAccount sa = new SavingsAccount();
+            Console.WriteLine(sa.getInfo());
         }
     }
 }
