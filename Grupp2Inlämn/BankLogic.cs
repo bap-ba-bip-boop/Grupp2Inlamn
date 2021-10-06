@@ -62,11 +62,26 @@ och namn).
 		{
 			this.Customers = new List<Customer>();
 		}
+		/*Returnerar en List<string> som innehåller informationen om kunden inklusive dennes konton.
+Första platsen i listan är förslagsvis reserverad för kundens namn och personnummer sedan följer
+informationen om kundens konton.*/
 		
-		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		//public List<string> GetCustomer() { }
+		public List<string> GetCustomer(long Personnummmer) 
+		{
+			//Steg 1 söka igenom this.customer listan efter matchande personnummer. 
+			//Steg 2 lägger in all information i en lista.
+			//Steg 3 returnera listan.
+			List<string> customerInfo = new List<string>();
+			foreach (Customer cust in this.Customers)
+            {
+                if (Personnummmer == cust.getPersonnummer())
+                {
+					customerInfo = cust.GetInfoOnAllAccounts();
+					break;
+                }
+            }
+			return customerInfo;
+		}
 
 		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
 och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs

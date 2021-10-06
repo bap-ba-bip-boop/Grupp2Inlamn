@@ -22,7 +22,12 @@ namespace Grupp2Inlämn
 			{
 				Console.WriteLine(entry);
 			}
-
+            List<string> accountinfo = bl.GetCustomer(536528884646);
+            Console.WriteLine("Anna Bok");
+            foreach (var account in accountinfo)
+            {
+                Console.WriteLine(account);
+            }
         }
     }
 }

@@ -45,16 +45,16 @@ namespace Grupp2Inlämn
             return infoAboutAccounts;
         }
 
-        public string GetInfoOnAllAccounts()
+        public List <string> GetInfoOnAllAccounts()
         {
             //returnerar Customers info i fomr av pNummer och för- och efternamn
             //följt avv alla dennes bankkonton
-            string returnInformation = "";
-            returnInformation = "Personal ID: " + this.Personnummer + ", Full Name: " + this.Name + "\n";
+            List <string> returnInformation = new List<string>();
+            returnInformation.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
 
             foreach (SavingsAccount account in this.listOfAccounts)
             {
-                returnInformation += account.getInfo() + "\n";
+                returnInformation.Add(account.getInfo());
             }
 
             return returnInformation;
