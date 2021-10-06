@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Grupp2Inlämn
 {
@@ -9,10 +10,19 @@ namespace Grupp2Inlämn
 
             BankLogic bl = new BankLogic();
             bool wasSuccessful = bl.AddCustomer("Fredrik", 554448884646);
-			if (wasSuccessful == true)
+            bl.AddCustomer("Pierre", 536528884646);
+            bl.AddCustomer("Fredrik", 554448884646);
+            if (wasSuccessful == true)
 			{
 				Console.WriteLine("Sjukt bra jobbat!");
 			}
+
+            List<string> customerInfo = bl.GetCustomers();
+			foreach (var entry in customerInfo)
+			{
+				Console.WriteLine(entry);
+			}
+
         }
     }
 }
