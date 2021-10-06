@@ -12,16 +12,26 @@ namespace Grupp2Inlämn
             bool wasSuccessful = bl.AddCustomer("Fredrik", 554448884646);
             bl.AddCustomer("Pierre", 536528884646);
             bl.AddCustomer("Fredrik", 554448884646);
+
+            bl.AddSavingsAccount(536528884646);
+            int accountIDCheck = bl.AddSavingsAccount(436528884646);
+            bl.AddSavingsAccount(554448884646);
+            bl.AddSavingsAccount(554448884646);
+
+            Console.WriteLine($"The id Returned is: {accountIDCheck}");
+
             if (wasSuccessful == true)
 			{
 				Console.WriteLine("Sjukt bra jobbat!");
 			}
 
-            List<string> customerInfo = bl.GetCustomers();
+            List<string> customerInfo = bl.GetCustomer(554448884646);
 			foreach (var entry in customerInfo)
 			{
 				Console.WriteLine(entry);
 			}
+
+
             List<string> accountinfo = bl.GetCustomer(536528884646);
             Console.WriteLine("Anna Bok");
             foreach (var account in accountinfo)

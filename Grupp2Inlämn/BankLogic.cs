@@ -99,34 +99,50 @@ returnerar false (om kunden inte fanns).*/
 			return PersonisFound;
 		}
 
-		//        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-		//och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-		//bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		//        //public List<string> RemoveCustomer() { }
+		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
+och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
+bort, saldot som kunden får tillbaka samt vad räntan blev.*/
+		//public List<string> RemoveCustomer() { }
 
-		//        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-		//och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-		//bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		//        public int AddSavinsAccount() { }
+		/*Skapar ett konto till kund med personnummer pNr, returnerar kontonumret som det skapade kontot
+		fick alternativt returneras –1 om inget konto skapades.*/
+		public int AddSavingsAccount(long personNummer)
+        {
+			//1. Kollar igenopm listan med Customers.
+			//2. Ifall vi finner en customer med samma personnummer ska vi inte lägga till sparkontot
+			//3. Annars om vi inte finner en customer med samma personnummer ska vi lägga till sparkontot
+			int accountID =  -1;
 
-		//        /*Returnerar en String som innehåller presentation av kontot med kontonummer accountId som tillhör
-		//kunden pNr (kontonummer, saldo, kontotyp, räntesats).*/
-		//        public string GetAccount() { }
+            foreach (Customer cust in this.Customers)
+            {
+				if(personNummer == cust.getPersonnummer())
+                {
+					accountID = cust.addAccount();
+					break;
+				}
+            }
 
-		//        /*Gör en insättning på konto med kontonummer accountId som tillhör kunden pNr, returnerar true om
-		//        det gick bra annars false..*/
-		//        public bool Deposit() 
-		//        {
+			return accountID;
+        }
 
-		//        }
-		//        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-		//och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-		//bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		//        public bool Withdraw() { }
-		//        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-		//och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-		//bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		//        public CloseAccount() { }
+		        /*Returnerar en String som innehåller presentation av kontot med kontonummer accountId som tillhör
+		kunden pNr (kontonummer, saldo, kontotyp, räntesats).*/
+		//public string GetAccount()
+        //{
+		//
+        //}
+
+			/*Gör en insättning på konto med kontonummer accountId som tillhör kunden pNr, returnerar true om
+			det gick bra annars false..*/
+			//public bool Deposit() { }
+		        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
+		och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
+		bort, saldot som kunden får tillbaka samt vad räntan blev.*/
+		        //public bool Withdraw() { }
+		        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
+		och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
+		bort, saldot som kunden får tillbaka samt vad räntan blev.*/
+		        //public CloseAccount() { }
 
 	}
 }

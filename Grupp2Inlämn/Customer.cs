@@ -60,9 +60,12 @@ namespace Grupp2Inlämn
             return returnInformation;
         }
 
-        public void addAccount() 
+        public int addAccount() 
         {
-            this.listOfAccounts.Add(new SavingsAccount());
+            //Lägger till ett nytt konto i listOfAccounts or returnerar det nya kontots AccountID
+            SavingsAccount newAccount = new SavingsAccount();
+            this.listOfAccounts.Add(newAccount);
+            return newAccount.getAccountID();
         }
         public string removeAccount(int accountID)
         {
