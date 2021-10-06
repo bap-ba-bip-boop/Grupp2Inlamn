@@ -83,10 +83,21 @@ informationen om kundens konton.*/
 			return customerInfo;
 		}
 
-		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		//public bool ChangeCustomerName() { }
+		/*Byter namn på kund med personnummer pNr till name, returnerar true om namnet ändrades annars
+returnerar false (om kunden inte fanns).*/
+		public bool ChangeCustomerName(string changeName, long Personnummer) 
+		{
+			bool PersonisFound = false;
+			foreach (Customer cust in this.Customers) 
+			{
+				if (Personnummer == cust.getPersonnummer()) 
+				{
+					PersonisFound = true;
+					cust.ChangeName(changeName);
+				}
+			}
+			return PersonisFound;
+		}
 
 		//        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
 		//och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs

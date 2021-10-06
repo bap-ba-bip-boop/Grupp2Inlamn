@@ -28,6 +28,13 @@ namespace Grupp2Inlämn
             {
                 Console.WriteLine(account);
             }
+            bl.ChangeCustomerName("Kristoffer", 536528884646);
+            accountinfo = bl.GetCustomer(536528884646);
+            Console.WriteLine("Micke");
+            foreach (var account in accountinfo)
+            {
+                Console.WriteLine(account);
+            }
         }
     }
 }
