@@ -6,20 +6,13 @@ namespace Grupp2Inlämn
     {
         static void Main(string[] args)
         {
-            Customer c = new Customer();
-            Customer d = new Customer();
 
-            Console.WriteLine(c.ChangeName("Jane Doe"));
-            c.addAccount();
-            c.addAccount();
-            Console.WriteLine(c.GetInfoOnAllAccounts());
-
-            d.addAccount();
-            d.addAccount();
-            d.addAccount();
-            Console.WriteLine(d.GetInfoOnAllAccounts());
-
-            Console.WriteLine(d.GetInfo());
+            BankLogic bl = new BankLogic();
+            bool wasSuccessful = bl.AddCustomer("Fredrik", 554448884646);
+			if (wasSuccessful == true)
+			{
+				Console.WriteLine("Sjukt bra jobbat!");
+			}
         }
     }
 }

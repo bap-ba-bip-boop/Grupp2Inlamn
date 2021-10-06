@@ -82,11 +82,24 @@ namespace Grupp2Inlämn
             }
             return infoAboutAccount;
         }
-        public Customer()
-        { 
-            this.Name = "John Doe";
-            this.Personnummer = 1234567890;
+        //public Customer()
+        //{ 
+        //    this.Name = "John Doe";
+        //    this.Personnummer = 1234567890;
+        //    this.listOfAccounts = new List<SavingsAccount>();
+
+        //}
+        public long getPersonnummer() 
+        {
+            return this.Personnummer;
+        }
+
+        public Customer(string name, long personnummer)
+        {
+            this.Name = name;
+            this.Personnummer = personnummer;
             this.listOfAccounts = new List<SavingsAccount>();
+
         }
     }
  }
