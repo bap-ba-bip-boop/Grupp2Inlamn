@@ -29,16 +29,16 @@ namespace Grupp2Inlämn
             return "Personal ID: " + this.Personnummer + ", Full Name: " + this.Name + "\n";
         }
 
-        public string removeAllAccounts()
+        public List <string> removeAllAccounts()
         {
             //1.samlar all info alla accounts
-            string infoAboutAccounts = null;
+            List <string> infoAboutAccounts = new List<string>();
 
-            infoAboutAccounts = "Personal ID: " + this.Personnummer + ", Full Name: " + this.Name + "\n";
+            infoAboutAccounts.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
 
             foreach (SavingsAccount account in this.listOfAccounts)
             {
-                infoAboutAccounts += account.getInfo() + "\n";
+                infoAboutAccounts.Add(account.getInfoWithInterest());
             }
             this.listOfAccounts.Clear();
 

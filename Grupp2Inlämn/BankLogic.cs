@@ -87,22 +87,42 @@ informationen om kundens konton.*/
 returnerar false (om kunden inte fanns).*/
 		public bool ChangeCustomerName(string changeName, long Personnummer) 
 		{
-			bool PersonisFound = false;
+			bool PersonisFound = false; //Ändra stor bokstav i variabelnamn
 			foreach (Customer cust in this.Customers) 
 			{
 				if (Personnummer == cust.getPersonnummer()) 
 				{
-					PersonisFound = true;
+					PersonisFound = true; //Ändra stor bokstav i variabelnamn
 					cust.ChangeName(changeName);
 				}
 			}
-			return PersonisFound;
+			return PersonisFound; //Ändra stor bokstav i variabelnamn
 		}
 
 		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		//public List<string> RemoveCustomer() { }
+		och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
+		bort, saldot som kunden får tillbaka samt vad räntan blev.*/
+		public List<string> RemoveCustomer(long personnummer) 
+		{
+			// 1. Kolla om personnr finns i customerlistan
+			// 2. Om kund inte finns; break;
+			// 3. Om kund finns, kalla på removeAllAccount() 
+			// 4. Ta bort customerobjektet
+			// 5. return <List> all info om kund, konton, saldo + intjänad ränta.
+
+			List<string> removedCustomerInfo = new List<string>();
+			
+				foreach (Customer cust in this.Customers)
+				{
+					if (personnummer == cust.getPersonnummer())
+					{
+					removedCustomerInfo = cust.removeAllAccounts();
+					this.Customers.Remove(cust);
+					break;
+				}
+				}
+			return removedCustomerInfo;
+		}
 
 		/*Skapar ett konto till kund med personnummer pNr, returnerar kontonumret som det skapade kontot
 		fick alternativt returneras –1 om inget konto skapades.*/

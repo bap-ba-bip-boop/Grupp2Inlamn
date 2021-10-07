@@ -43,7 +43,14 @@ namespace Grupp2Inlämn
         {
             //returnerar parametrarna i följande ordning
             //(kontonummer, saldo, kontotyp, räntesats).
-            return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + ", Account Type: " + this.AccountType + ", Interest Rate: " + this.Interest + " %";
+            return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + " kr, Account Type: " + this.AccountType + ", Interest Rate: " + this.Interest + " %";
+        }
+        public string getInfoWithInterest()
+        {
+            //returnerar parametrarna i följande ordning
+            //(kontonummer, saldo, kontotyp, räntesats).
+            return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + " kr, Account Type: " 
+                + this.AccountType + ", Interest Rate: " + this.getInterest() + " kr";
         }
 
         public SavingsAccount()

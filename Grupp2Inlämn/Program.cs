@@ -45,6 +45,18 @@ namespace Grupp2Inlämn
             {
                 Console.WriteLine(account);
             }
+            Console.WriteLine("Anna Bok");
+            List<string> removedCustomer = bl.RemoveCustomer(554448884646);
+			foreach (var cust in removedCustomer)
+			{
+				Console.WriteLine(cust);
+			}
+            accountinfo = bl.GetCustomers();
+            
+            foreach (var account in accountinfo)
+            {
+                Console.WriteLine(account);
+            }
         }
     }
 }
