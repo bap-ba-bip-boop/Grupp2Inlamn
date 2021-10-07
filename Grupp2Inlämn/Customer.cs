@@ -104,5 +104,19 @@ namespace Grupp2Inlämn
             this.listOfAccounts = new List<SavingsAccount>();
 
         }
+        public string getAccount(int accountID)
+        {
+            string accountInfo = null;
+
+            foreach (var account in this.listOfAccounts)
+            {
+                if(accountID == account.getAccountID())
+                {
+                    accountInfo = account.getInfo();
+                    break;
+                }
+            }
+            return accountInfo;
+        }
     }
  }

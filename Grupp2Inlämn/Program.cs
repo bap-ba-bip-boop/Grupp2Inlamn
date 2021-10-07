@@ -30,32 +30,16 @@ namespace Grupp2Inlämn
 			{
 				Console.WriteLine(entry);
 			}
+            string accountInfo = bl.GetAccount(536528884646, 1001);
+            Console.WriteLine("Här kommer pippilångstrump!");
 
-
-            List<string> accountinfo = bl.GetCustomer(536528884646);
-            Console.WriteLine("Anna Bok");
-            foreach (var account in accountinfo)
+            if(accountInfo == null)
             {
-                Console.WriteLine(account);
+                Console.WriteLine("Account info not found! Wrong parameters entered.");
             }
-            bl.ChangeCustomerName("Kristoffer", 536528884646);
-            accountinfo = bl.GetCustomer(536528884646);
-            Console.WriteLine("Micke");
-            foreach (var account in accountinfo)
+            else
             {
-                Console.WriteLine(account);
-            }
-            Console.WriteLine("Anna Bok");
-            List<string> removedCustomer = bl.RemoveCustomer(554448884646);
-			foreach (var cust in removedCustomer)
-			{
-				Console.WriteLine(cust);
-			}
-            accountinfo = bl.GetCustomers();
-            
-            foreach (var account in accountinfo)
-            {
-                Console.WriteLine(account);
+                Console.WriteLine(accountInfo);
             }
         }
     }
@@ -82,3 +66,30 @@ namespace Grupp2Inlämn
 //    Console.WriteLine("The account was not removed. No such ID exists");
 //}
 //Console.WriteLine(d.GetInfo());
+
+
+//         List<string> accountinfo = bl.GetCustomer(536528884646);
+//         Console.WriteLine("Anna Bok");
+//         foreach (var account in accountinfo)
+//         {
+//             Console.WriteLine(account);
+//         }
+//         bl.ChangeCustomerName("Kristoffer", 536528884646);
+//         accountinfo = bl.GetCustomer(536528884646);
+//         Console.WriteLine("Micke");
+//         foreach (var account in accountinfo)
+//         {
+//             Console.WriteLine(account);
+//         }
+//         Console.WriteLine("Anna Bok");
+//         List<string> removedCustomer = bl.RemoveCustomer(554448884646);
+//foreach (var cust in removedCustomer)
+//{
+//	Console.WriteLine(cust);
+//}
+//         accountinfo = bl.GetCustomers();
+
+//         foreach (var account in accountinfo)
+//         {
+//             Console.WriteLine(account);
+//         }

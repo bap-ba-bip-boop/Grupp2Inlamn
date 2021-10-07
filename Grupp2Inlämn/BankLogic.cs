@@ -145,24 +145,37 @@ returnerar false (om kunden inte fanns).*/
 			return accountID;
         }
 
-		        /*Returnerar en String som innehåller presentation av kontot med kontonummer accountId som tillhör
+        /*Returnerar en String som innehåller presentation av kontot med kontonummer accountId som tillhör
 		kunden pNr (kontonummer, saldo, kontotyp, räntesats).*/
-		//public string GetAccount()
-        //{
-		//
-        //}
+        public string GetAccount(long personnummer, int accountIDToFind)
+        {
+			//1. Hitta rätt customer i customerList
+			//2. Hitta customers accounts i listOfAccounts
+			//3. Om vi hittar rätt pers/account returnera string med accountInfo
+			string accountInfo = null;
 
-			/*Gör en insättning på konto med kontonummer accountId som tillhör kunden pNr, returnerar true om
-			det gick bra annars false..*/
-			//public bool Deposit() { }
-		        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-		och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-		bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		        //public bool Withdraw() { }
-		        /*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-		och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-		bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		        //public CloseAccount() { }
+			foreach (Customer cust in this.Customers)
+            {
+				if (personnummer == cust.getPersonnummer())
+                {
+					accountInfo = cust.getAccount(accountIDToFind);
+					break;
+                }
+			}
+			return accountInfo;
+		}
+
+		/*Gör en insättning på konto med kontonummer accountId som tillhör kunden pNr, returnerar true om
+        det gick bra annars false..*/
+		//public bool Deposit() { }
+		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
+och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
+bort, saldot som kunden får tillbaka samt vad räntan blev.*/
+		//public bool Withdraw() { }
+		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
+och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
+bort, saldot som kunden får tillbaka samt vad räntan blev.*/
+		//public CloseAccount() { }
 
 	}
 }
