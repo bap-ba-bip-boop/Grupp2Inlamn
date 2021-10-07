@@ -30,29 +30,25 @@ namespace Grupp2Inlämn
 			{
 				Console.WriteLine(entry);
 			}
-            string accountInfo = bl.GetAccount(536528884646, 1001);
-            Console.WriteLine("Här kommer pippilångstrump!");
+            Console.WriteLine("------------------------------------------------");
+            string removedAccount = bl.CloseAccount(554448884646, 1002);
 
-            if(accountInfo == null)
+            if(removedAccount == null)
             {
-                Console.WriteLine("Account info not found! Wrong parameters entered.");
+                Console.WriteLine("No Account was removed!");
             }
             else
             {
-                Console.WriteLine(accountInfo);
-            }
-            bl.Deposit(1001, 536528884646, (decimal)1337.00);
-            accountInfo = bl.GetAccount(536528884646, 1001);
-            Console.WriteLine("Här kommer pippilångstrump!");
+                customerInfo = bl.GetCustomer(554448884646);
+                foreach (var entry in customerInfo)
+                {
+                    Console.WriteLine(entry);
+                }
 
-            if (accountInfo == null)
-            {
-                Console.WriteLine("Account info not found! Wrong parameters entered.");
+                Console.WriteLine("Removed Account: \n" + removedAccount);
+
             }
-            else
-            {
-                Console.WriteLine(accountInfo);
-            }
+            
         }
     }
 }
@@ -105,3 +101,28 @@ namespace Grupp2Inlämn
 //         {
 //             Console.WriteLine(account);
 //         }
+
+/*
+            string accountInfo = bl.GetAccount(536528884646, 1001);
+            Console.WriteLine("Här kommer pippilångstrump!");
+
+            if(accountInfo == null)
+            {
+                Console.WriteLine("Account info not found! Wrong parameters entered.");
+            }
+            else
+            {
+                Console.WriteLine(accountInfo);
+            }
+            bl.Deposit(1001, 536528884646, (decimal)1337.00);
+            accountInfo = bl.GetAccount(536528884646, 1001);
+            Console.WriteLine("Här kommer pippilångstrump!");
+
+            if (accountInfo == null)
+            {
+                Console.WriteLine("Account info not found! Wrong parameters entered.");
+            }
+            else
+            {
+                Console.WriteLine(accountInfo);
+            }*/
