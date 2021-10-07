@@ -167,7 +167,25 @@ returnerar false (om kunden inte fanns).*/
 
 		/*Gör en insättning på konto med kontonummer accountId som tillhör kunden pNr, returnerar true om
         det gick bra annars false..*/
-		//public bool Deposit() { }
+		// Steg 1: Söker fram rätt kund baserat på pNr
+		//Steg 2: Sök fram rätt konto till kund baserat på accountId.
+		// Steg 3: Skapar en kontroll som säger ifrån om summan =0 eller <0
+		// Steg 4: Använd deposit metoden i SavingsAccount för att sätta in en specifik summa i kontot
+		public bool Deposit(int accountId,long personnummer, decimal amount) 
+		{
+			bool customerFound = false; 
+            foreach (var custom in Customers)
+            {
+				if(personnummer == custom.getPersonnummer())
+                {
+					customerFound = custom.findAccountToDeposit(accountId, amount);
+                }
+            }
+			return customerFound;
+		}
+
+
+
 		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
 och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
 bort, saldot som kunden får tillbaka samt vad räntan blev.*/

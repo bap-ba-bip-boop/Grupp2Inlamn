@@ -41,6 +41,18 @@ namespace Grupp2Inlämn
             {
                 Console.WriteLine(accountInfo);
             }
+            bl.Deposit(1001, 536528884646, (decimal)1337.00);
+            accountInfo = bl.GetAccount(536528884646, 1001);
+            Console.WriteLine("Här kommer pippilångstrump!");
+
+            if (accountInfo == null)
+            {
+                Console.WriteLine("Account info not found! Wrong parameters entered.");
+            }
+            else
+            {
+                Console.WriteLine(accountInfo);
+            }
         }
     }
 }

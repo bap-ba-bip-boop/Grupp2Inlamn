@@ -7,25 +7,33 @@ namespace Grupp2Inlämn
     class SavingsAccount
     {
         //instansvariabel
-        private double Amount;
-        private double Interest;
+        private decimal Amount;
+        private decimal Interest;
         private string AccountType;
         private int AccountNr;
 
         //klassvariabel
         private static int AccountPool = 1001;
 
-        public void deposit(double depositAmount) 
+        public bool deposit(decimal depositAmount) 
         {
+            bool correctAmount = false;
+            if(depositAmount > 0)
+            {
+                this.Amount += depositAmount;
+                correctAmount = true;
+            }
+            return correctAmount; 
             //kod deposit
-            this.Amount += depositAmount;
+       /*     this.Amount += depositAmount;
             Console.WriteLine("You deposited {0}kr", depositAmount);
-            Console.WriteLine("Your current saldo is now {0}kr", this.Amount);
+            Console.WriteLine("Your current saldo is now {0}kr", this.Amount);*/
+
         }
         public void withdrawl(double withdrawlAmount) 
         {
             //kod för withdrawl
-            this.Amount -= withdrawlAmount;
+           // this.Amount -= withdrawlAmount;
             Console.WriteLine("You withdrew {0}kr", withdrawlAmount);
             Console.WriteLine("Your current saldo is now {0}kr", this.Amount);
         }
@@ -34,10 +42,10 @@ namespace Grupp2Inlämn
             //returnar AccountNr till användaren(i detta fall BankLogic)
             return this.AccountNr;
         }
-        public double getInterest() 
+        public decimal getInterest() 
         {
             //returnar räntan till användaren(till BankLogic). ränta i kr
-            return this.Amount*this.Interest/100.0;
+            return this.Amount*this.Interest/((decimal)100.0);
         }
         public string getInfo()
         {
@@ -56,9 +64,9 @@ namespace Grupp2Inlämn
         public SavingsAccount()
         {
             this.AccountNr = AccountPool++; ;
-            this.Amount = 1000.0;
+            this.Amount = (decimal)1000.0;
             this.AccountType = "Sparkonto";
-            this.Interest = 1.0;
+            this.Interest = (decimal)1.0;
         }
     }
 }

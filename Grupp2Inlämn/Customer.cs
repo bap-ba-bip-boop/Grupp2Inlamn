@@ -118,5 +118,18 @@ namespace Grupp2Inlämn
             }
             return accountInfo;
         }
+        public bool findAccountToDeposit(int accountID, decimal Amount)
+        {
+            bool accountFound = false; 
+            foreach (var account in listOfAccounts)
+            {
+                if (accountID == account.getAccountID())
+                {
+                    //account.deposit(Amount);
+                    accountFound = account.deposit(Amount);
+                }
+            }
+            return accountFound;
+        }
     }
  }
