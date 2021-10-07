@@ -30,12 +30,19 @@ namespace Grupp2Inlämn
             Console.WriteLine("Your current saldo is now {0}kr", this.Amount);*/
 
         }
-        public void withdrawl(double withdrawlAmount) 
+        public bool withdraw(decimal withdrawAmount) 
         {
+            bool correctAmount = false;
+            if (withdrawAmount > 0)
+            {
+                this.Amount -= (decimal)withdrawAmount;
+                correctAmount = true;
+            }
+            return correctAmount;
             //kod för withdrawl
-           // this.Amount -= withdrawlAmount;
-            Console.WriteLine("You withdrew {0}kr", withdrawlAmount);
-            Console.WriteLine("Your current saldo is now {0}kr", this.Amount);
+            // this.Amount -= withdrawlAmount;
+            //Console.WriteLine("You withdrew {0}kr", withdrawlAmount);
+            //Console.WriteLine("Your current saldo is now {0}kr", this.Amount);
         }
         public int getAccountID()
         {

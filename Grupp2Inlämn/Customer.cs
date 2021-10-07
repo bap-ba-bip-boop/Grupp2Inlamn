@@ -14,7 +14,7 @@ namespace Grupp2Inlämn
         {
             //håller koll så att inga tomma strings assignas till Name
             bool stringIsEmpty = false;
-            if(newName == "")
+            if (newName == "")
             {
                 stringIsEmpty = true;
             }
@@ -24,15 +24,15 @@ namespace Grupp2Inlämn
             }
             return !stringIsEmpty;
         }
-        public string GetInfo() 
+        public string GetInfo()
         {
             return "Personal ID: " + this.Personnummer + ", Full Name: " + this.Name + "\n";
         }
 
-        public List <string> removeAllAccounts()
+        public List<string> removeAllAccounts()
         {
             //1.samlar all info alla accounts
-            List <string> infoAboutAccounts = new List<string>();
+            List<string> infoAboutAccounts = new List<string>();
 
             infoAboutAccounts.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
 
@@ -45,11 +45,11 @@ namespace Grupp2Inlämn
             return infoAboutAccounts;
         }
 
-        public List <string> GetInfoOnAllAccounts()
+        public List<string> GetInfoOnAllAccounts()
         {
             //returnerar Customers info i fomr av pNummer och för- och efternamn
             //följt avv alla dennes bankkonton
-            List <string> returnInformation = new List<string>();
+            List<string> returnInformation = new List<string>();
             returnInformation.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
 
             foreach (SavingsAccount account in this.listOfAccounts)
@@ -60,7 +60,7 @@ namespace Grupp2Inlämn
             return returnInformation;
         }
 
-        public int addAccount() 
+        public int addAccount()
         {
             //Lägger till ett nytt konto i listOfAccounts or returnerar det nya kontots AccountID
             SavingsAccount newAccount = new SavingsAccount();
@@ -76,7 +76,7 @@ namespace Grupp2Inlämn
 
             foreach (SavingsAccount account in this.listOfAccounts)
             {
-                if(account.getAccountID() == accountID)
+                if (account.getAccountID() == accountID)
                 {
                     infoAboutAccount = account.getInfo();
                     this.listOfAccounts.Remove(account);
@@ -92,7 +92,7 @@ namespace Grupp2Inlämn
         //    this.listOfAccounts = new List<SavingsAccount>();
 
         //}
-        public long getPersonnummer() 
+        public long getPersonnummer()
         {
             return this.Personnummer;
         }
@@ -110,7 +110,7 @@ namespace Grupp2Inlämn
 
             foreach (var account in this.listOfAccounts)
             {
-                if(accountID == account.getAccountID())
+                if (accountID == account.getAccountID())
                 {
                     accountInfo = account.getInfo();
                     break;
@@ -120,13 +120,25 @@ namespace Grupp2Inlämn
         }
         public bool findAccountToDeposit(int accountID, decimal Amount)
         {
-            bool accountFound = false; 
+            bool accountFound = false;
             foreach (var account in listOfAccounts)
             {
                 if (accountID == account.getAccountID())
                 {
                     //account.deposit(Amount);
                     accountFound = account.deposit(Amount);
+                }
+            }
+            return accountFound;
+        }
+        public bool findAccountToWithdraw(int accountID, decimal Amount)
+        {
+            bool accountFound = false;
+            foreach (var account in listOfAccounts)
+            {
+                if (accountID == account.getAccountID())
+                {
+                    accountFound = account.withdraw(Amount);
                 }
             }
             return accountFound;

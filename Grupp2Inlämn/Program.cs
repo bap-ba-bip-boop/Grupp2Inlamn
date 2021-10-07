@@ -21,19 +21,19 @@ namespace Grupp2Inlämn
             Console.WriteLine($"The id Returned is: {accountIDCheck}");
 
             if (wasSuccessful == true)
-			{
-				Console.WriteLine("Sjukt bra jobbat!");
-			}
+            {
+                Console.WriteLine("Sjukt bra jobbat!");
+            }
 
             List<string> customerInfo = bl.GetCustomer(554448884646);
-			foreach (var entry in customerInfo)
-			{
-				Console.WriteLine(entry);
-			}
+            foreach (var entry in customerInfo)
+            {
+                Console.WriteLine(entry);
+            }
             string accountInfo = bl.GetAccount(536528884646, 1001);
             Console.WriteLine("Här kommer pippilångstrump!");
 
-            if(accountInfo == null)
+            if (accountInfo == null)
             {
                 Console.WriteLine("Account info not found! Wrong parameters entered.");
             }
@@ -44,6 +44,18 @@ namespace Grupp2Inlämn
             bl.Deposit(1001, 536528884646, (decimal)1337.00);
             accountInfo = bl.GetAccount(536528884646, 1001);
             Console.WriteLine("Här kommer pippilångstrump!");
+
+            if (accountInfo == null)
+            {
+                Console.WriteLine("Account info not found! Wrong parameters entered.");
+            }
+            else
+            {
+                Console.WriteLine(accountInfo);
+            }
+            bl.Withdraw(1001, 536528884646, (decimal)500.00);
+            accountInfo = bl.GetAccount(536528884646, 1001);
+            Console.WriteLine("Här kommer Kristoffer!");
 
             if (accountInfo == null)
             {
