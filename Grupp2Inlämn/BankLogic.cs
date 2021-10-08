@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Grupp2Inlämn
@@ -227,6 +228,12 @@ saldo samt ränta på pengarna ska genereras.*/
 
 			return accountInfo;
 		}
+		public void printToTextFile()
+        {
+			List<string> customerInfo = this.GetCustomers();
 
+			string fileName = "output.txt";
+			File.WriteAllLines(fileName, customerInfo);
+		}
 	}
 }

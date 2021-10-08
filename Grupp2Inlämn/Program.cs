@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Grupp2Inlämn
 {
@@ -12,54 +13,18 @@ namespace Grupp2Inlämn
             bool wasSuccessful = bl.AddCustomer("Fredrik", 554448884646);
             bl.AddCustomer("Pierre", 536528884646);
             bl.AddCustomer("Fredrik", 554448884646);
+            
+            bl.AddCustomer("Niklas", 1234514646);
+            
+            bl.AddCustomer("Kristoffer", 9876534567);
+            bl.AddCustomer("Calle", 9696969696);
 
             bl.AddSavingsAccount(536528884646);
             int accountIDCheck = bl.AddSavingsAccount(436528884646);
             bl.AddSavingsAccount(554448884646);
             bl.AddSavingsAccount(554448884646);
 
-            Console.WriteLine($"The id Returned is: {accountIDCheck}");
-
-            if (wasSuccessful == true)
-            {
-                Console.WriteLine("Sjukt bra jobbat!");
-            }
-
-            List<string> customerInfo = bl.GetCustomer(554448884646);
-            foreach (var entry in customerInfo)
-            {
-                Console.WriteLine(entry);
-            }
-            string accountInfo = bl.GetAccount(536528884646, 1001);
-            Console.WriteLine("Här kommer pippilångstrump!");
-
-            if (accountInfo == null)
-            {
-                Console.WriteLine("No Account was removed!");
-            }
-            else
-            {
-                customerInfo = bl.GetCustomer(554448884646);
-                foreach (var entry in customerInfo)
-                {
-                    Console.WriteLine(entry);
-                }
-
-                Console.WriteLine("Removed Account: \n" + removedAccount);
-
-            }
-           bool succesfulWithdraw = bl.Withdraw(1001, 536528884646, (decimal)3500.00);
-            accountInfo = bl.GetAccount(536528884646, 1001);
-            Console.WriteLine("Här kommer Kristoffer!");
-
-            if (succesfulWithdraw)
-            {
-                Console.WriteLine(accountInfo);
-            }
-            else
-            {
-                Console.WriteLine("Unsuccessful Withdrawl");
-            }
+            bl.printToTextFile();
         }
     }
 }
