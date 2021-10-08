@@ -53,17 +53,17 @@ namespace Grupp2Inlämn
             {
                 Console.WriteLine(accountInfo);
             }
-            bl.Withdraw(1001, 536528884646, (decimal)500.00);
+           bool succesfulWithdraw = bl.Withdraw(1001, 536528884646, (decimal)3500.00);
             accountInfo = bl.GetAccount(536528884646, 1001);
             Console.WriteLine("Här kommer Kristoffer!");
 
-            if (accountInfo == null)
+            if (succesfulWithdraw)
             {
-                Console.WriteLine("Account info not found! Wrong parameters entered.");
+                Console.WriteLine(accountInfo);
             }
             else
             {
-                Console.WriteLine(accountInfo);
+                Console.WriteLine("Unsuccessful Withdrawl");
             }
         }
     }

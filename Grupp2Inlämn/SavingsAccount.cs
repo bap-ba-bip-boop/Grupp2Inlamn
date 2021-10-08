@@ -33,7 +33,7 @@ namespace Grupp2Inlämn
         public bool withdraw(decimal withdrawAmount) 
         {
             bool correctAmount = false;
-            if (withdrawAmount > 0)
+            if (withdrawAmount > 0 && withdrawAmount <= this.Amount)
             {
                 this.Amount -= (decimal)withdrawAmount;
                 correctAmount = true;
