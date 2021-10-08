@@ -204,10 +204,29 @@ returnerar false (om kunden inte fanns).*/
 			}
 			return customerFound;
 		}
-		/*Tar bort kund med personnummer pNr ur banken, alla kundens eventuella konton tas också bort
-och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs
-bort, saldot som kunden får tillbaka samt vad räntan blev.*/
-		//public CloseAccount() { }
+		/*Stänger ett konto med kontonummer accountId som tillhör kunden pNr, presentation av kontots
+saldo samt ränta på pengarna ska genereras.*/
+		public string CloseAccount(long personNummer, int accountID)
+		{
+			// 1. finner en kund med matchande personnummer till personnummret i parametrarna
+			// 2. om vi inte finner en kund med matchande personnummer, returneras null
+			// 3. annars om vi finner en kund med matchende personnummer, söker vi igenom dennas account efter matchende accountID
+			// 4. om vi inte finned ett account med matchende accountID, returneras null
+			// 5. annars om vi finner ett account med matchende accountID, returnerar vi dess uppgifter i form av en sträng
+			// 6. och tar bort kontot
+			string accountInfo = null;
+
+            foreach (Customer cust in this.Customers)
+            {
+				if(personNummer == cust.getPersonnummer())
+                {
+					accountInfo = cust.closeAccount(accountID);
+					break;
+                }
+            }
+
+			return accountInfo;
+		}
 
 	}
 }

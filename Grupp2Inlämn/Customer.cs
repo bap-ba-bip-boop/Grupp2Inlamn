@@ -67,24 +67,24 @@ namespace Grupp2Inlämn
             this.listOfAccounts.Add(newAccount);
             return newAccount.getAccountID();
         }
-        public string removeAccount(int accountID)
-        {
-            //1. finna ett account med rätt ID, om det finns. Annars returnerar vi null 
-            //2. ifall vi finner ett account med rätt id, tar vi bort det och returnerar vi a 
-
-            string infoAboutAccount = null;
-
-            foreach (SavingsAccount account in this.listOfAccounts)
-            {
-                if (account.getAccountID() == accountID)
-                {
-                    infoAboutAccount = account.getInfo();
-                    this.listOfAccounts.Remove(account);
-                    break;
-                }
-            }
-            return infoAboutAccount;
-        }
+        //public string removeAccount(int accountID)
+        //{
+        //    //1. finna ett account med rätt ID, om det finns. Annars returnerar vi null 
+        //    //2. ifall vi finner ett account med rätt id, tar vi bort det och returnerar vi a 
+        //
+        //    string infoAboutAccount = null;
+        //
+        //    foreach (SavingsAccount account in this.listOfAccounts)
+        //    {
+        //        if(account.getAccountID() == accountID)
+        //        {
+        //            infoAboutAccount = account.getInfo();
+        //            this.listOfAccounts.Remove(account);
+        //            break;
+        //        }
+        //    }
+        //    return infoAboutAccount;
+        //}
         //public Customer()
         //{ 
         //    this.Name = "John Doe";
@@ -118,6 +118,7 @@ namespace Grupp2Inlämn
             }
             return accountInfo;
         }
+
         public bool findAccountToDeposit(int accountID, decimal Amount)
         {
             bool accountFound = false;
@@ -142,6 +143,21 @@ namespace Grupp2Inlämn
                 }
             }
             return accountFound;
+        }
+        public string closeAccount(int accountID)
+        {
+            string accountInfo = null;
+
+            foreach (SavingsAccount account in this.listOfAccounts)
+            {
+                if(accountID == account.getAccountID())
+                {
+                    accountInfo = account.getInfoWithInterest();
+                    this.listOfAccounts.Remove(account);
+                    break;
+                }
+            }
+            return accountInfo;
         }
     }
  }
