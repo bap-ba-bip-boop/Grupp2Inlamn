@@ -3,54 +3,119 @@ using System.Collections.Generic;
 
 namespace Grupp2Inlämn
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
+	class Program
+	{
+		BankLogic bl;
+		public Program()
+		{
+			bl = new BankLogic();
+		}
 
-            BankLogic bl = new BankLogic();
-            bool wasSuccessful = bl.AddCustomer("Fredrik", 554448884646);
-            bl.AddCustomer("Pierre", 536528884646);
-            bl.AddCustomer("Fredrik", 554448884646);
+		public void AddCustomer()
+		{
+			Console.WriteLine("Ange namn och personnummer.");
+			Console.Write("Namn: ");
+			string name = Console.ReadLine();
+			Console.Write("Personnummer: ");
+			long personNummer = int.Parse(Console.ReadLine());
+			bl.AddCustomer(name, personNummer);
 
-            bl.AddSavingsAccount(536528884646);
-            int accountIDCheck = bl.AddSavingsAccount(436528884646);
-            bl.AddSavingsAccount(554448884646);
-            bl.AddSavingsAccount(554448884646);
+		}
+		void kundMeny()
+		{
 
-            //Console.WriteLine("Presentera person 1");
-            //List<string> customerInfo = bl.GetCustomer(536528884646);
-            //customerInfo.ForEach(Console.WriteLine);
-            //
-            //Console.Read();
-            //
-            //Console.WriteLine("Presentera person 2");
-            //customerInfo = bl.GetCustomer(554448884646);
-            //customerInfo.ForEach(Console.WriteLine);
+			int menuChoice = 0;
+			while (menuChoice != 7)
+			{
+				Console.WriteLine("Kund Meny");
+				Console.WriteLine("Choose an operation:");
+				Console.WriteLine("1. Do thing A");
+				Console.WriteLine("2. Do thing B");
+				Console.WriteLine("3. Do thing C");
+				Console.WriteLine("4. Do thing D");
+				Console.WriteLine("5. Do thing E");
+				Console.WriteLine("6. Do thing F");
+				Console.WriteLine("7. EXIT");
 
-            bl.printToTextFile();
-        }
-    }
-}
-//SavingsAccount sa = new SavingsAccount();
-//
-////Console.WriteLine(sa.getInfo());
-//sa.deposit(3000.0);
-////Console.WriteLine(sa.getInfo());
-//sa.withdrawl(500.0);
-////Console.WriteLine(sa.getInfo());
-//
-//Console.WriteLine($"Account ID: {sa.getAccountNum()}");
-//Console.WriteLine($"Interest: {sa.getInterest()}");
+				switch (menuChoice)
+				{
+					case 1:
+						Console.WriteLine("Does thing A");
+						break;
+					case 2:
+						kundMeny();
+						break;
+					case 3:
+						Console.WriteLine("Does thing C");
+						break;
+					case 4:
+						Console.WriteLine("Does thing D");
+						break;
+					case 5:
+						Console.WriteLine("Does thing E");
+						break;
+					case 6:
+						Console.WriteLine("Does thing F");
+						break;
+					case 7:
+						break;
+					default:
+						Console.WriteLine("Invalid entry!");
+						break;
+				}
+			}
+		}
+		void bankMeny()
+		{
+			int menuChoice = 0;
+			while (menuChoice != 7)
+			{
+				Console.WriteLine("Bank Meny");
+				Console.WriteLine("Choose an operation:");
+				Console.WriteLine("1. Välj konto:");
+				Console.WriteLine("2. Do thing B");
+				Console.WriteLine("3. Do thing C");
+				Console.WriteLine("4. Do thing D");
+				Console.WriteLine("5. Do thing E");
+				Console.WriteLine("6. Do thing F");
+				Console.WriteLine("7. EXIT");
 
-//string info = d.removeAccount(1003);
-//if (info != null)
-//{
-//    Console.WriteLine("Account was successfully deleated");
-//    Console.WriteLine(info);
-//}
-//else
-//{
-//    Console.WriteLine("The account was not removed. No such ID exists");
-//}
-//Console.WriteLine(d.GetInfo());
+				menuChoice = int.Parse(Console.ReadLine());
+
+				switch (menuChoice)
+				{
+					case 1:
+						kundMeny();
+						break;
+					case 2:
+						AddCustomer();
+						break;
+					case 3:
+						Console.WriteLine("Does thing C");
+						break;
+					case 4:
+						Console.WriteLine("Does thing D");
+						break;
+					case 5:
+						Console.WriteLine("Does thing E");
+						break;
+					case 6:
+						Console.WriteLine("Does thing F");
+						break;
+					case 7:
+						break;
+					default:
+						Console.WriteLine("Invalid entry!");
+						break;
+				}
+			}
+		}
+			public static void Main(string[] args)
+			{
+				Program p = new Program();
+				p.AddCustomer();
+				p.bl.GetCustomers().ForEach(Console.WriteLine);
+			}
+	}
+}   
+
