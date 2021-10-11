@@ -125,7 +125,25 @@ namespace Grupp2Inlämn
 				);
 		}
 
-		void kundMeny(long pernum)
+		public void Withdraw(long personNummer) 
+		{
+			Console.WriteLine("Ange kontonummer:");
+			int accountId = int.Parse(Console.ReadLine());
+			Console.WriteLine("Skriv in önskat belopp");
+			decimal amount = decimal.Parse(Console.ReadLine());
+			bool amountOk = bl.Withdraw(accountId, personNummer, amount);
+			
+			if (amountOk == true)
+			{
+				Console.WriteLine($"Uttag: {amount} kr från konto {accountId} ");
+			}
+			else
+			{
+				Console.WriteLine("Belopp fel eller kontonummer ej hittat");
+			}
+		}
+
+		void kundMeny(long pNum)
 		{
 
 			int menuChoice = 0;
