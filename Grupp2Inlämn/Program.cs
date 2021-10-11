@@ -16,7 +16,7 @@ namespace Grupp2Inlämn
             Console.WriteLine("Ditt nya konto har ID: {0}", newAccountID);
 		}
 		public void RemoveCustomer()
-        {
+		{
 			Console.WriteLine("Ange personnummer på kunden som ska tas bort.");
 			Console.Write("Personnummer: ");
 			long personNummer = int.Parse(Console.ReadLine());
@@ -27,7 +27,7 @@ namespace Grupp2Inlämn
 				Console.WriteLine("Info om Kund Som tagits bort:.");
 				removedCustomerInfo.ForEach(Console.WriteLine);
 			}
-            else//vi hittade inte en kund med matchande personnummer
+			else//vi hittade inte en kund med matchande personnummer
 			{
 				Console.WriteLine("Det finns ingen kund med det personnummret");
 			}
@@ -42,7 +42,26 @@ namespace Grupp2Inlämn
 			bl.AddCustomer(name, personNummer);
 
 		}
-		void kundMeny(long personnummer)
+
+		 
+		public void ChangeName(long personnummer)
+		{
+			Console.WriteLine("Ange det nya namnet och personnummer till kund");
+			Console.Write("Nytt namn: ");
+			string name = Console.ReadLine();
+			bool succesfulNameChange = bl.ChangeCustomerName(name, personnummer); ;
+			if (succesfulNameChange == true)// vi har funnit en kund med matchande personNummer
+			{
+				Console.WriteLine("Namnet ändrades");
+								
+			}
+			else//vi hittade inte en kund med matchande personnummer
+			{
+				Console.WriteLine("Det finns ingen kund med det personnummret");
+			}
+		}
+	
+		void kundMeny()
 		{
 
 			int menuChoice = 0;
@@ -137,6 +156,12 @@ namespace Grupp2Inlämn
 			Program p = new Program();
 			p.AddCustomer();
 			p.AddCustomer();
+            Console.WriteLine("Alla Kunder i banken:");
+			p.bl.GetCustomers().ForEach(Console.WriteLine);
+			//p.RemoveCustomer();
+
+			p.ChangeName(123);
+
 			Console.WriteLine("Alla Kunder i banken:");
 			p.bl.GetCustomers().ForEach(Console.WriteLine);
 			
