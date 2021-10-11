@@ -18,45 +18,17 @@ namespace Grupp2Inlämn
             bl.AddSavingsAccount(554448884646);
             bl.AddSavingsAccount(554448884646);
 
-            Console.WriteLine($"The id Returned is: {accountIDCheck}");
+            //Console.WriteLine("Presentera person 1");
+            //List<string> customerInfo = bl.GetCustomer(536528884646);
+            //customerInfo.ForEach(Console.WriteLine);
+            //
+            //Console.Read();
+            //
+            //Console.WriteLine("Presentera person 2");
+            //customerInfo = bl.GetCustomer(554448884646);
+            //customerInfo.ForEach(Console.WriteLine);
 
-            if (wasSuccessful == true)
-			{
-				Console.WriteLine("Sjukt bra jobbat!");
-			}
-
-            List<string> customerInfo = bl.GetCustomer(554448884646);
-			foreach (var entry in customerInfo)
-			{
-				Console.WriteLine(entry);
-			}
-
-
-            List<string> accountinfo = bl.GetCustomer(536528884646);
-            Console.WriteLine("Anna Bok");
-            foreach (var account in accountinfo)
-            {
-                Console.WriteLine(account);
-            }
-            bl.ChangeCustomerName("Kristoffer", 536528884646);
-            accountinfo = bl.GetCustomer(536528884646);
-            Console.WriteLine("Micke");
-            foreach (var account in accountinfo)
-            {
-                Console.WriteLine(account);
-            }
-            Console.WriteLine("Anna Bok");
-            List<string> removedCustomer = bl.RemoveCustomer(554448884646);
-			foreach (var cust in removedCustomer)
-			{
-				Console.WriteLine(cust);
-			}
-            accountinfo = bl.GetCustomers();
-            
-            foreach (var account in accountinfo)
-            {
-                Console.WriteLine(account);
-            }
+            bl.printToTextFile();
         }
     }
 }

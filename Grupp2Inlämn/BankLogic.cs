@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Grupp2Inlämn
@@ -164,5 +166,57 @@ returnerar false (om kunden inte fanns).*/
 		bort, saldot som kunden får tillbaka samt vad räntan blev.*/
 		        //public CloseAccount() { }
 
+		/*Gör ett uttag på konto med kontonummer accountId som tillhör kunden pNr, returnerar true om det
+		gick bra annars false*/
+		// Steg 1: Söker fram rätt kund baserat på pNr.
+		//Steg 2: Sök fram rätt konto till kund baserat på accountId.
+		// Steg 3: Skapar en kontroll som säger ifrån om summan = 0 eller < 0.
+		// Steg 4: Använd Withdraw metoden i SavingsAccount för att ta ut en specifik summa i kontot.
+		public bool Withdraw(int accountId, long personnummer, decimal amount) 
+		{
+			bool customerFound = false;
+			foreach (var custom in Customers)
+			{
+				if (personnummer == custom.getPersonnummer())
+				{
+					customerFound = custom.findAccountToWithdraw(accountId, amount);
+				}
+			}
+			return customerFound;
+		}
+		/*Stänger ett konto med kontonummer accountId som tillhör kunden pNr, presentation av kontots
+saldo samt ränta på pengarna ska genereras.*/
+		public string CloseAccount(long personNummer, int accountID)
+		{
+			// 1. finner en kund med matchande personnummer till personnummret i parametrarna
+			// 2. om vi inte finner en kund med matchande personnummer, returneras null
+			// 3. annars om vi finner en kund med matchende personnummer, söker vi igenom dennas account efter matchende accountID
+			// 4. om vi inte finned ett account med matchende accountID, returneras null
+			// 5. annars om vi finner ett account med matchende accountID, returnerar vi dess uppgifter i form av en sträng
+			// 6. och tar bort kontot
+			string accountInfo = null;
+
+            foreach (Customer cust in this.Customers)
+            {
+				if(personNummer == cust.getPersonnummer())
+                {
+					accountInfo = cust.closeAccount(accountID);
+					break;
+                }
+            }
+
+			return accountInfo;
+		}
+		public void printToTextFile()
+        {
+			//List<string> customerInfo = this.GetCustomers();
+			//
+			//string fileName = "output.txt";
+			//File.WriteAllLines(fileName, customerInfo);
+
+			string path = @"test.txt";
+
+			File.WriteAllLines(path, this.Customers.Select(customer => customer.GetInfo()));
+		}
 	}
 }
