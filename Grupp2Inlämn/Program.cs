@@ -35,7 +35,7 @@ namespace Grupp2Inlämn
             Console.WriteLine("Ditt nya konto har ID: {0}", newAccountID);
 		}
 		public void CloseAccount(long personNummer)
-        {
+		{
 			Console.WriteLine("Ange det Kontonummer som ska avslutas");
             Console.Write("Kontonummer: ");
 			int kontonummer = int.Parse(Console.ReadLine());
@@ -48,7 +48,7 @@ namespace Grupp2Inlämn
 		{
 			Console.WriteLine("Ange personnummer på kunden som ska tas bort.");
 			Console.Write("Personnummer: ");
-			long personNummer = int.Parse(Console.ReadLine());
+			long personNummer = long.Parse(Console.ReadLine());
 			List<string> removedCustomerInfo = bl.RemoveCustomer(personNummer);
 
 			if (removedCustomerInfo != null)// vi har funnit en kund med matchande personNummer
@@ -63,7 +63,7 @@ namespace Grupp2Inlämn
 		}
 		public void printAllCustomers()
         {
-				
+
 			List<string> customers = bl.GetCustomers();
 			foreach (var cust in customers)
 			{
@@ -81,7 +81,6 @@ namespace Grupp2Inlämn
 
 		}
 
-		 
 		public void ChangeName(long personnummer)
 		{
 			Console.WriteLine("Ange det nya namnet och personnummer till kund");
@@ -91,15 +90,42 @@ namespace Grupp2Inlämn
 			if (succesfulNameChange == true)// vi har funnit en kund med matchande personNummer
 			{
 				Console.WriteLine("Namnet ändrades");
-								
 			}
 			else//vi hittade inte en kund med matchande personnummer
 			{
 				Console.WriteLine("Det finns ingen kund med det personnummret");
 			}
 		}
-	
-		void kundMeny(long pNr)
+
+		public void GetAccount(long personNummer)
+		{
+			Console.WriteLine("Ange det kontonummret ni vill komma åt.");
+			Console.Write("Kontonummer: ");
+			int kontoNummer = int.Parse(Console.ReadLine());
+
+			string accountInfo = bl.GetAccount(personNummer, kontoNummer);
+
+			Console.WriteLine(accountInfo != null ? accountInfo : "Kontonummret som skrevs in är ej korrekt");
+		}
+
+		public void deposit(long personNummer)
+		{
+			Console.WriteLine("Ange det kontonummret ni vill lägga in pengar på.");
+			Console.Write("Kontonummer: ");
+			int kontoNummer = int.Parse(Console.ReadLine());
+
+			Console.WriteLine("Hur mycket pengar vill ni lägga in?");
+			Console.Write("Antal i kr: ");
+			int antalPengar = int.Parse(Console.ReadLine());
+
+			bool successfulTransaction = bl.Deposit(kontoNummer, personNummer, antalPengar);
+
+			Console.WriteLine(
+				successfulTransaction ? "Transaktionen lyckades" : "Transaktionen misslyckades"
+				);
+		}
+
+		void kundMeny(long pernum)
 		{
 
 			int menuChoice = 0;
@@ -202,5 +228,5 @@ namespace Grupp2Inlämn
 
 		}
 	}
-}   
+}
 
