@@ -56,6 +56,25 @@ namespace Grupp2Inlämn
 				Console.WriteLine("Det finns ingen kund med det personnummret");
 			}
 		}
+		public void Withdraw() 
+		{
+			Console.WriteLine("Ange kontonummer:");
+			int accountId = int.Parse(Console.ReadLine());
+			Console.WriteLine("Skriv in önskat belopp");
+			decimal amount = decimal.Parse(Console.ReadLine());
+			bool amountOk = bl.Withdraw(accountId, 123, amount);
+			
+			if (amountOk == true)
+			{
+				Console.WriteLine($"Uttag: {amount} kr från konto {accountId} ");
+			}
+			else
+			{
+				Console.WriteLine("Belopp fel eller kontonummer ej hittat");
+			}
+		}
+
+
 	
 		void kundMeny()
 		{
@@ -150,12 +169,16 @@ namespace Grupp2Inlämn
 			{
 				Program p = new Program();
 			p.AddCustomer();
-			p.AddCustomer();
-            Console.WriteLine("Alla Kunder i banken:");
+			//p.AddCustomer();
+			Console.WriteLine("Alla Kunder i banken:");
 			p.bl.GetCustomers().ForEach(Console.WriteLine);
-			//p.RemoveCustomer();
+			
+			p.AddAccount(123);
+			p.bl.GetCustomer(123).ForEach(Console.WriteLine);
 
-			p.ChangeName(123);
+			p.CloseAccount(123);
+
+			p.bl.GetCustomer(123).ForEach(Console.WriteLine);
 
 			Console.WriteLine("Alla Kunder i banken:");
 			p.bl.GetCustomers().ForEach(Console.WriteLine);
