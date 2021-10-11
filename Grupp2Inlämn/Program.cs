@@ -32,13 +32,22 @@ namespace Grupp2Inlämn
 				Console.WriteLine("Det finns ingen kund med det personnummret");
 			}
 		}
+					public void printAllCustomers()
+            {
+				
+				List<string> customers = bl.GetCustomers();
+				foreach (var cust in customers)
+			{
+				Console.WriteLine(cust);
+			}
+            }
 		public void AddCustomer()
 		{
 			Console.WriteLine("Ange namn och personnummer.");
 			Console.Write("Namn: ");
 			string name = Console.ReadLine();
 			Console.Write("Personnummer: ");
-			long personNummer = int.Parse(Console.ReadLine());
+			long personNummer = long.Parse(Console.ReadLine());
 			bl.AddCustomer(name, personNummer);
 
 		}
@@ -115,7 +124,7 @@ namespace Grupp2Inlämn
 				Console.WriteLine("1. Välj konto:");
 				Console.WriteLine("2. Lägg Till Kund");
 				Console.WriteLine("3. Ta bort kund");
-				Console.WriteLine("4. Do thing D");
+				Console.WriteLine("4. Skriv ut kundlista");
 				Console.WriteLine("5. Do thing E");
 				Console.WriteLine("6. Do thing F");
 				Console.WriteLine("7. EXIT");
@@ -134,7 +143,7 @@ namespace Grupp2Inlämn
 						Console.WriteLine("Does thing C");
 						break;
 					case 4:
-						Console.WriteLine("Does thing D");
+						printAllCustomers();
 						break;
 					case 5:
 						Console.WriteLine("Does thing E");
