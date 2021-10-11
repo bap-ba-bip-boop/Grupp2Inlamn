@@ -15,6 +15,16 @@ namespace Grupp2Inlämn
 			int newAccountID = bl.AddSavingsAccount(personnummer);
             Console.WriteLine("Ditt nya konto har ID: {0}", newAccountID);
 		}
+		public void CloseAccount(long personNummer)
+        {
+			Console.WriteLine("Ange det Kontonummer som ska avslutas");
+            Console.WriteLine("Kontonummer: ");
+			int kontonummer = int.Parse(Console.ReadLine());
+
+			string closeAccountResult = bl.CloseAccount(personNummer, kontonummer);
+
+            Console.WriteLine(closeAccountResult != null ? closeAccountResult : "Kontonummret som skrevs in är ej korrekt");
+        }
 		public void RemoveCustomer()
 		{
 			Console.WriteLine("Ange personnummer på kunden som ska tas bort.");
@@ -32,15 +42,15 @@ namespace Grupp2Inlämn
 				Console.WriteLine("Det finns ingen kund med det personnummret");
 			}
 		}
-					public void printAllCustomers()
-            {
+		public void printAllCustomers()
+        {
 				
 				List<string> customers = bl.GetCustomers();
 				foreach (var cust in customers)
 			{
 				Console.WriteLine(cust);
 			}
-            }
+        }
 		public void AddCustomer()
 		{
 			Console.WriteLine("Ange namn och personnummer.");
