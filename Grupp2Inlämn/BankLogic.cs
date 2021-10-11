@@ -44,7 +44,7 @@ och namn).
 
 			foreach (var customer in this.Customers)
 			{
-				if (personnummer == customer.getPersonnummer())
+				if (personnummer == customer.GetPersonnummer())
 				{
 					existingCustomer = true;
 					break;
@@ -76,7 +76,7 @@ informationen om kundens konton.*/
 			List<string> customerInfo = null;
 			foreach (Customer cust in this.Customers)
             {
-                if (Personnummmer == cust.getPersonnummer())
+                if (Personnummmer == cust.GetPersonnummer())
                 {
 					customerInfo = cust.GetInfoOnAllAccounts();
 					break;
@@ -92,7 +92,7 @@ returnerar false (om kunden inte fanns).*/
 			bool PersonisFound = false; //Ändra stor bokstav i variabelnamn
 			foreach (Customer cust in this.Customers) 
 			{
-				if (Personnummer == cust.getPersonnummer()) 
+				if (Personnummer == cust.GetPersonnummer()) 
 				{
 					PersonisFound = true; //Ändra stor bokstav i variabelnamn
 					cust.ChangeName(changeName);
@@ -116,9 +116,9 @@ returnerar false (om kunden inte fanns).*/
 			
 				foreach (Customer cust in this.Customers)
 				{
-					if (personnummer == cust.getPersonnummer())
+					if (personnummer == cust.GetPersonnummer())
 					{
-					removedCustomerInfo = cust.removeAllAccounts();
+					removedCustomerInfo = cust.RemoveAllAccounts();
 					this.Customers.Remove(cust);
 					break;
 					}
@@ -137,9 +137,9 @@ returnerar false (om kunden inte fanns).*/
 
             foreach (Customer cust in this.Customers)
             {
-				if(personNummer == cust.getPersonnummer())
+				if(personNummer == cust.GetPersonnummer())
                 {
-					accountID = cust.addAccount();
+					accountID = cust.AddAccount();
 					break;
 				}
             }
@@ -158,9 +158,9 @@ returnerar false (om kunden inte fanns).*/
 
 			foreach (Customer cust in this.Customers)
 			{
-				if (personnummer == cust.getPersonnummer())
+				if (personnummer == cust.GetPersonnummer())
 				{
-					accountInfo = cust.getAccount(accountIDToFind);
+					accountInfo = cust.GetAccount(accountIDToFind);
 					break;
 				}
 			}
@@ -178,9 +178,9 @@ returnerar false (om kunden inte fanns).*/
 			bool customerFound = false;
 			foreach (var custom in Customers)
 			{
-				if (personnummer == custom.getPersonnummer())
+				if (personnummer == custom.GetPersonnummer())
 				{
-					customerFound = custom.findAccountToDeposit(accountId, amount);
+					customerFound = custom.FindAccountToDeposit(accountId, amount);
 				}
 			}
 			return customerFound;
@@ -197,9 +197,9 @@ returnerar false (om kunden inte fanns).*/
 			bool customerFound = false;
 			foreach (var custom in Customers)
 			{
-				if (personnummer == custom.getPersonnummer())
+				if (personnummer == custom.GetPersonnummer())
 				{
-					customerFound = custom.findAccountToWithdraw(accountId, amount);
+					customerFound = custom.FindAccountToWithdraw(accountId, amount);
 				}
 			}
 			return customerFound;
@@ -218,9 +218,9 @@ saldo samt ränta på pengarna ska genereras.*/
 
             foreach (Customer cust in this.Customers)
             {
-				if(personNummer == cust.getPersonnummer())
+				if(personNummer == cust.GetPersonnummer())
                 {
-					accountInfo = cust.closeAccount(accountID);
+					accountInfo = cust.CloseAccount(accountID);
 					break;
                 }
             }
