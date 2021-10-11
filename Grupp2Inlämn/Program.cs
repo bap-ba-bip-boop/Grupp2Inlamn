@@ -10,6 +10,11 @@ namespace Grupp2Inlämn
 		{
 			bl = new BankLogic();
 		}
+		public void AddAccount(long personnummer)
+        {
+			int newAccountID = bl.AddSavingsAccount(personnummer);
+            Console.WriteLine("Ditt nya konto har ID: {0}", newAccountID);
+		}
 		public void RemoveCustomer()
         {
 			Console.WriteLine("Ange personnummer på kunden som ska tas bort.");
@@ -37,7 +42,7 @@ namespace Grupp2Inlämn
 			bl.AddCustomer(name, personNummer);
 
 		}
-		void kundMeny()
+		void kundMeny(long personnummer)
 		{
 
 			int menuChoice = 0;
@@ -47,7 +52,7 @@ namespace Grupp2Inlämn
 				Console.WriteLine("Choose an operation:");
 				Console.WriteLine("1. Do thing A");
 				Console.WriteLine("2. Do thing B");
-				Console.WriteLine("3. Do thing C");
+				Console.WriteLine("3. Skapa nytt sparkonto");
 				Console.WriteLine("4. Do thing D");
 				Console.WriteLine("5. Do thing E");
 				Console.WriteLine("6. Do thing F");
@@ -59,7 +64,7 @@ namespace Grupp2Inlämn
 						Console.WriteLine("Does thing A");
 						break;
 					case 2:
-						kundMeny();
+						//kundMeny();
 						break;
 					case 3:
 						Console.WriteLine("Does thing C");
@@ -126,18 +131,19 @@ namespace Grupp2Inlämn
 				}
 			}
 		}
-			public static void Main(string[] args)
-			{
-				Program p = new Program();
+			
+		public static void Main(string[] args)
+		{
+			Program p = new Program();
 			p.AddCustomer();
 			p.AddCustomer();
-            Console.WriteLine("Alla Kunder i banken:");
-			p.bl.GetCustomers().ForEach(Console.WriteLine);
-			p.RemoveCustomer();
-
 			Console.WriteLine("Alla Kunder i banken:");
 			p.bl.GetCustomers().ForEach(Console.WriteLine);
-			}
+			
+			p.AddAccount(123);
+			p.bl.GetCustomer(123).ForEach(Console.WriteLine); 
+
+		}
 	}
 }   
 
