@@ -150,7 +150,7 @@ namespace Grupp2Inlämn
 
             foreach (SavingsAccount account in this.listOfAccounts)
             {
-                if(accountID == account.getAccountID())
+                if (accountID == account.getAccountID())
                 {
                     accountInfo = account.getInfoWithInterest();
                     this.listOfAccounts.Remove(account);
@@ -160,4 +160,4 @@ namespace Grupp2Inlämn
             return accountInfo;
         }
     }
- }
+}

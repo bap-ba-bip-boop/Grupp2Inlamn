@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Grupp2Inlämn
@@ -72,7 +73,7 @@ informationen om kundens konton.*/
 			//Steg 1 söka igenom this.customer listan efter matchande personnummer. 
 			//Steg 2 lägger in all information i en lista.
 			//Steg 3 returnera listan.
-			List<string> customerInfo = new List<string>();
+			List<string> customerInfo = null;
 			foreach (Customer cust in this.Customers)
             {
                 if (Personnummmer == cust.getPersonnummer())
@@ -111,7 +112,7 @@ returnerar false (om kunden inte fanns).*/
 			// 4. Ta bort customerobjektet
 			// 5. return <List> all info om kund, konton, saldo + intjänad ränta.
 
-			List<string> removedCustomerInfo = new List<string>();
+			List<string> removedCustomerInfo = null;
 			
 				foreach (Customer cust in this.Customers)
 				{
@@ -120,7 +121,7 @@ returnerar false (om kunden inte fanns).*/
 					removedCustomerInfo = cust.removeAllAccounts();
 					this.Customers.Remove(cust);
 					break;
-				}
+					}
 				}
 			return removedCustomerInfo;
 		}
@@ -146,22 +147,22 @@ returnerar false (om kunden inte fanns).*/
 			return accountID;
         }
 
-        /*Returnerar en String som innehåller presentation av kontot med kontonummer accountId som tillhör
-		kunden pNr (kontonummer, saldo, kontotyp, räntesats).*/
-        public string GetAccount(long personnummer, int accountIDToFind)
-        {
+		/*Returnerar en String som innehåller presentation av kontot med kontonummer accountId som tillhör
+	kunden pNr (kontonummer, saldo, kontotyp, räntesats).*/
+		public string GetAccount(long personnummer, int accountIDToFind)
+		{
 			//1. Hitta rätt customer i customerList
 			//2. Hitta customers accounts i listOfAccounts
 			//3. Om vi hittar rätt pers/account returnera string med accountInfo
 			string accountInfo = null;
 
 			foreach (Customer cust in this.Customers)
-            {
+			{
 				if (personnummer == cust.getPersonnummer())
-                {
+				{
 					accountInfo = cust.getAccount(accountIDToFind);
 					break;
-                }
+				}
 			}
 			return accountInfo;
 		}
@@ -172,20 +173,18 @@ returnerar false (om kunden inte fanns).*/
 		//Steg 2: Sök fram rätt konto till kund baserat på accountId.
 		// Steg 3: Skapar en kontroll som säger ifrån om summan =0 eller <0
 		// Steg 4: Använd deposit metoden i SavingsAccount för att sätta in en specifik summa i kontot
-		public bool Deposit(int accountId,long personnummer, decimal amount) 
+		public bool Deposit(int accountId, long personnummer, decimal amount)
 		{
-			bool customerFound = false; 
-            foreach (var custom in Customers)
-            {
-				if(personnummer == custom.getPersonnummer())
-                {
+			bool customerFound = false;
+			foreach (var custom in Customers)
+			{
+				if (personnummer == custom.getPersonnummer())
+				{
 					customerFound = custom.findAccountToDeposit(accountId, amount);
-                }
-            }
+				}
+			}
 			return customerFound;
 		}
-
-
 
 		/*Gör ett uttag på konto med kontonummer accountId som tillhör kunden pNr, returnerar true om det
 		gick bra annars false*/
@@ -230,10 +229,9 @@ saldo samt ränta på pengarna ska genereras.*/
 		}
 		public void printToTextFile()
         {
-			List<string> customerInfo = this.GetCustomers();
+			string path = @"test.txt";
 
-			string fileName = "output.txt";
-			File.WriteAllLines(fileName, customerInfo);
+			File.WriteAllLines(path, this.Customers.Select(customer => customer.GetInfo()));
 		}
 	}
 }
