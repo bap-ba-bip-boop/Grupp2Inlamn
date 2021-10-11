@@ -14,7 +14,7 @@ namespace Grupp2Inlämn
         {
             //håller koll så att inga tomma strings assignas till Name
             bool stringIsEmpty = false;
-            if(newName == "")
+            if (newName == "")
             {
                 stringIsEmpty = true;
             }
@@ -24,15 +24,15 @@ namespace Grupp2Inlämn
             }
             return !stringIsEmpty;
         }
-        public string GetInfo() 
+        public string GetInfo()
         {
             return "Personal ID: " + this.Personnummer + ", Full Name: " + this.Name + "\n";
         }
 
-        public List <string> removeAllAccounts()
+        public List<string> removeAllAccounts()
         {
             //1.samlar all info alla accounts
-            List <string> infoAboutAccounts = new List<string>();
+            List<string> infoAboutAccounts = new List<string>();
 
             infoAboutAccounts.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
 
@@ -45,11 +45,11 @@ namespace Grupp2Inlämn
             return infoAboutAccounts;
         }
 
-        public List <string> GetInfoOnAllAccounts()
+        public List<string> GetInfoOnAllAccounts()
         {
             //returnerar Customers info i fomr av pNummer och för- och efternamn
             //följt avv alla dennes bankkonton
-            List <string> returnInformation = new List<string>();
+            List<string> returnInformation = new List<string>();
             returnInformation.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
 
             foreach (SavingsAccount account in this.listOfAccounts)
@@ -60,31 +60,31 @@ namespace Grupp2Inlämn
             return returnInformation;
         }
 
-        public int addAccount() 
+        public int addAccount()
         {
             //Lägger till ett nytt konto i listOfAccounts or returnerar det nya kontots AccountID
             SavingsAccount newAccount = new SavingsAccount();
             this.listOfAccounts.Add(newAccount);
             return newAccount.getAccountID();
         }
-        public string removeAccount(int accountID)
-        {
-            //1. finna ett account med rätt ID, om det finns. Annars returnerar vi null 
-            //2. ifall vi finner ett account med rätt id, tar vi bort det och returnerar vi a 
-
-            string infoAboutAccount = null;
-
-            foreach (SavingsAccount account in this.listOfAccounts)
-            {
-                if(account.getAccountID() == accountID)
-                {
-                    infoAboutAccount = account.getInfo();
-                    this.listOfAccounts.Remove(account);
-                    break;
-                }
-            }
-            return infoAboutAccount;
-        }
+        //public string removeAccount(int accountID)
+        //{
+        //    //1. finna ett account med rätt ID, om det finns. Annars returnerar vi null 
+        //    //2. ifall vi finner ett account med rätt id, tar vi bort det och returnerar vi a 
+        //
+        //    string infoAboutAccount = null;
+        //
+        //    foreach (SavingsAccount account in this.listOfAccounts)
+        //    {
+        //        if(account.getAccountID() == accountID)
+        //        {
+        //            infoAboutAccount = account.getInfo();
+        //            this.listOfAccounts.Remove(account);
+        //            break;
+        //        }
+        //    }
+        //    return infoAboutAccount;
+        //}
         //public Customer()
         //{ 
         //    this.Name = "John Doe";
@@ -92,7 +92,7 @@ namespace Grupp2Inlämn
         //    this.listOfAccounts = new List<SavingsAccount>();
 
         //}
-        public long getPersonnummer() 
+        public long getPersonnummer()
         {
             return this.Personnummer;
         }
@@ -104,5 +104,60 @@ namespace Grupp2Inlämn
             this.listOfAccounts = new List<SavingsAccount>();
 
         }
+        public string getAccount(int accountID)
+        {
+            string accountInfo = null;
+
+            foreach (var account in this.listOfAccounts)
+            {
+                if (accountID == account.getAccountID())
+                {
+                    accountInfo = account.getInfo();
+                    break;
+                }
+            }
+            return accountInfo;
+        }
+
+        public bool findAccountToDeposit(int accountID, decimal Amount)
+        {
+            bool accountFound = false;
+            foreach (var account in listOfAccounts)
+            {
+                if (accountID == account.getAccountID())
+                {
+                    //account.deposit(Amount);
+                    accountFound = account.deposit(Amount);
+                }
+            }
+            return accountFound;
+        }
+        public bool findAccountToWithdraw(int accountID, decimal Amount)
+        {
+            bool accountFound = false;
+            foreach (var account in listOfAccounts)
+            {
+                if (accountID == account.getAccountID())
+                {
+                    accountFound = account.withdraw(Amount);
+                }
+            }
+            return accountFound;
+        }
+        public string closeAccount(int accountID)
+        {
+            string accountInfo = null;
+
+            foreach (SavingsAccount account in this.listOfAccounts)
+            {
+                if (accountID == account.getAccountID())
+                {
+                    accountInfo = account.getInfoWithInterest();
+                    this.listOfAccounts.Remove(account);
+                    break;
+                }
+            }
+            return accountInfo;
+        }
     }
- }
+}

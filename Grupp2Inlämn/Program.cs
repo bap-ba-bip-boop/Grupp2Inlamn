@@ -10,7 +10,23 @@ namespace Grupp2Inlämn
 		{
 			bl = new BankLogic();
 		}
+		public void RemoveCustomer()
+        {
+			Console.WriteLine("Ange personnummer på kunden som ska tas bort.");
+			Console.Write("Personnummer: ");
+			long personNummer = int.Parse(Console.ReadLine());
+			List<string> removedCustomerInfo = bl.RemoveCustomer(personNummer);
 
+			if (removedCustomerInfo != null)// vi har funnit en kund med matchande personNummer
+			{
+				Console.WriteLine("Info om Kund Som tagits bort:.");
+				removedCustomerInfo.ForEach(Console.WriteLine);
+			}
+            else//vi hittade inte en kund med matchande personnummer
+			{
+				Console.WriteLine("Det finns ingen kund med det personnummret");
+			}
+		}
 		public void AddCustomer()
 		{
 			Console.WriteLine("Ange namn och personnummer.");
@@ -73,8 +89,8 @@ namespace Grupp2Inlämn
 				Console.WriteLine("Bank Meny");
 				Console.WriteLine("Choose an operation:");
 				Console.WriteLine("1. Välj konto:");
-				Console.WriteLine("2. Do thing B");
-				Console.WriteLine("3. Do thing C");
+				Console.WriteLine("2. Lägg Till Kund");
+				Console.WriteLine("3. Ta bort kund");
 				Console.WriteLine("4. Do thing D");
 				Console.WriteLine("5. Do thing E");
 				Console.WriteLine("6. Do thing F");
@@ -113,8 +129,14 @@ namespace Grupp2Inlämn
 			public static void Main(string[] args)
 			{
 				Program p = new Program();
-				p.AddCustomer();
-				p.bl.GetCustomers().ForEach(Console.WriteLine);
+			p.AddCustomer();
+			p.AddCustomer();
+            Console.WriteLine("Alla Kunder i banken:");
+			p.bl.GetCustomers().ForEach(Console.WriteLine);
+			p.RemoveCustomer();
+
+			Console.WriteLine("Alla Kunder i banken:");
+			p.bl.GetCustomers().ForEach(Console.WriteLine);
 			}
 	}
 }   

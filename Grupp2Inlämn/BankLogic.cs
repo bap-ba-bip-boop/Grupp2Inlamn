@@ -112,7 +112,7 @@ returnerar false (om kunden inte fanns).*/
 			// 4. Ta bort customerobjektet
 			// 5. return <List> all info om kund, konton, saldo + intjänad ränta.
 
-			List<string> removedCustomerInfo = new List<string>();
+			List<string> removedCustomerInfo = null;
 			
 				foreach (Customer cust in this.Customers)
 				{
@@ -121,7 +121,7 @@ returnerar false (om kunden inte fanns).*/
 					removedCustomerInfo = cust.removeAllAccounts();
 					this.Customers.Remove(cust);
 					break;
-				}
+					}
 				}
 			return removedCustomerInfo;
 		}
