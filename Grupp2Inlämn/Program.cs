@@ -70,6 +70,16 @@ namespace Grupp2Inlämn
 				Console.WriteLine(cust);
 			}
         }
+		public void customerAccounts(long Personnummer)
+		{
+			List<string> allAccounts = bl.GetCustomer(Personnummer);
+            foreach (var accounts in allAccounts)
+            {
+				Console.WriteLine(accounts);
+            }
+
+		}
+
 		public void AddCustomer()
 		{
 			Console.WriteLine("Ange namn och personnummer.");
@@ -155,7 +165,7 @@ namespace Grupp2Inlämn
 				Console.WriteLine("2. Do thing B");
 				Console.WriteLine("3. Skapa nytt sparkonto");
 				Console.WriteLine("4. Do thing D");
-				Console.WriteLine("5. Do thing E");
+				Console.WriteLine("5. Visa alla dina sparkonton");
 				Console.WriteLine("6. Do thing F");
 				Console.WriteLine("7. EXIT");
 
@@ -176,7 +186,7 @@ namespace Grupp2Inlämn
 						Console.WriteLine("Does thing D");
 						break;
 					case 5:
-						Console.WriteLine("Does thing E");
+						//customerAccounts();
 						break;
 					case 6:
 						Console.WriteLine("Does thing F");
