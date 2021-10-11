@@ -6,7 +6,7 @@ namespace Grupp2Inlämn
 {
 	class Program
 	{
-		BankLogic bl;
+		private BankLogic bl;
 		public Program()
 		{
 			bl = new BankLogic();
@@ -158,44 +158,48 @@ namespace Grupp2Inlämn
 		{
 
 			int menuChoice = 0;
-			while (menuChoice != 7)
+			while (menuChoice != 8)
 			{
 				Console.WriteLine("Kund Meny");
-				Console.WriteLine("Choose an operation:");
-				Console.WriteLine("1. Do thing A");
-				Console.WriteLine("2. Do thing B");
-				Console.WriteLine("3. Skapa nytt sparkonto");
-				Console.WriteLine("4. Do thing D");
-				Console.WriteLine("5. Visa alla dina sparkonton");
-				Console.WriteLine("6. Do thing F");
-				Console.WriteLine("7. EXIT");
+				Console.WriteLine("Välj Ett Alternativ:");
+				Console.WriteLine("1. Ändra Kundens Namn");
+				Console.WriteLine("2. Skapa Sparkonto");
+				Console.WriteLine("3. Avsluta Konto");
+				Console.WriteLine("4. Hämta info om ett konto");
+				Console.WriteLine("5. Hämta info om alla konton");
+				Console.WriteLine("6. Sätt in pengar");
+				Console.WriteLine("7. hämta pengar");
+				Console.WriteLine("8. EXIT");
 
 				menuChoice = int.Parse(Console.ReadLine());
 
 				switch (menuChoice)
 				{
 					case 1:
-						Console.WriteLine("Does thing A");
+						ChangeName(pNum);
 						break;
 					case 2:
-						//kundMeny();
+						AddAccount(pNum);
 						break;
 					case 3:
-						Console.WriteLine("Does thing C");
+						CloseAccount(pNum);
 						break;
 					case 4:
-						Console.WriteLine("Does thing D");
+						GetAccount(pNum);
 						break;
 					case 5:
-						//customerAccounts();
+						customerAccounts(pNum);
 						break;
 					case 6:
-						Console.WriteLine("Does thing F");
+						deposit(pNum);
 						break;
 					case 7:
+						Withdraw(pNum);
+						break;
+					case 8:
 						break;
 					default:
-						Console.WriteLine("Invalid entry!");
+						Console.WriteLine("Felaktigt Alternativ!");
 						break;
 				}
 			}
@@ -203,24 +207,22 @@ namespace Grupp2Inlämn
 		void bankMeny()
 		{
 			int menuChoice = 0;
-			while (menuChoice != 7)
+			while (menuChoice != 5)
 			{
 				Console.WriteLine("Bank Meny");
-				Console.WriteLine("Choose an operation:");
+				Console.WriteLine("Välj Ett Alternativ:");
 				Console.WriteLine("1. Välj konto:");
 				Console.WriteLine("2. Lägg Till Kund");
 				Console.WriteLine("3. Ta bort kund");
 				Console.WriteLine("4. Skriv ut kundlista");
-				Console.WriteLine("5. Do thing E");
-				Console.WriteLine("6. Do thing F");
-				Console.WriteLine("7. EXIT");
+				Console.WriteLine("5. EXIT");
 
 				menuChoice = int.Parse(Console.ReadLine());
 
 				switch (menuChoice)
 				{
 					case 1:
-						long pNr = UseAccount();
+						long pNr = UserAccount();
                         if (pNr != -1)
                         {
 							kundMeny(pNr);
@@ -230,21 +232,15 @@ namespace Grupp2Inlämn
 						AddCustomer();
 						break;
 					case 3:
-						Console.WriteLine("Does thing C");
+						RemoveCustomer();
 						break;
 					case 4:
 						printAllCustomers();
 						break;
 					case 5:
-						Console.WriteLine("Does thing E");
-						break;
-					case 6:
-						Console.WriteLine("Does thing F");
-						break;
-					case 7:
 						break;
 					default:
-						Console.WriteLine("Invalid entry!");
+						Console.WriteLine("Felaktigt Alternativ!");
 						break;
 				}
 			}
