@@ -18,12 +18,12 @@ namespace Grupp2Inlämn
 		public void CloseAccount(long personNummer)
         {
 			Console.WriteLine("Ange det Kontonummer som ska avslutas");
-            Console.WriteLine("Kontonummer: ");
+            Console.Write("Kontonummer: ");
 			int kontonummer = int.Parse(Console.ReadLine());
 
 			string closeAccountResult = bl.CloseAccount(personNummer, kontonummer);
 
-            Console.WriteLine(closeAccountResult != null ? closeAccountResult : "Kontonummret som skrevs in är ej korrekt");
+            Console.WriteLine(closeAccountResult != null ? "Det Avslutade Kontot: " + closeAccountResult : "Kontonummret som skrevs in är ej korrekt");
         }
 		public void RemoveCustomer()
 		{
@@ -45,8 +45,8 @@ namespace Grupp2Inlämn
 		public void printAllCustomers()
         {
 				
-				List<string> customers = bl.GetCustomers();
-				foreach (var cust in customers)
+			List<string> customers = bl.GetCustomers();
+			foreach (var cust in customers)
 			{
 				Console.WriteLine(cust);
 			}
@@ -174,18 +174,16 @@ namespace Grupp2Inlämn
 		{
 			Program p = new Program();
 			p.AddCustomer();
-			p.AddCustomer();
+			//p.AddCustomer();
             Console.WriteLine("Alla Kunder i banken:");
-			p.bl.GetCustomers().ForEach(Console.WriteLine);
-			//p.RemoveCustomer();
-
-			p.ChangeName(123);
-
-			Console.WriteLine("Alla Kunder i banken:");
 			p.bl.GetCustomers().ForEach(Console.WriteLine);
 			
 			p.AddAccount(123);
-			p.bl.GetCustomer(123).ForEach(Console.WriteLine); 
+			p.bl.GetCustomer(123).ForEach(Console.WriteLine);
+
+			p.CloseAccount(123);
+
+			p.bl.GetCustomer(123).ForEach(Console.WriteLine);
 
 		}
 	}
