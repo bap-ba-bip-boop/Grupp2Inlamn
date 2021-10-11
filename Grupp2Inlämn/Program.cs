@@ -10,6 +10,25 @@ namespace Grupp2Inlämn
 		{
 			bl = new BankLogic();
 		}
+		public long UserAccount()
+		{
+			Console.WriteLine("Skriv in personnummer för att logga in.");
+			Console.WriteLine("Personnummer: ");
+			long personnummer = long.Parse(Console.ReadLine());
+			List<string> customers = bl.GetCustomer(personnummer);
+
+			if(customers != null) // Customers innehåller info, dvs att det finns en kund med det personnummret
+            {
+                Console.WriteLine("Personnummret matchar! Välkommern till Kund Menyn");
+            }
+            else // Customers innehåller inte någon info, dvs att det inte en matchande kund till personnummret
+            {
+                Console.WriteLine("Det finns ingen kund med det angivna personnummret.");
+				personnummer = -1;
+            }
+			return personnummer;
+		}
+
 		public void AddAccount(long personnummer)
         {
 			int newAccountID = bl.AddSavingsAccount(personnummer);
@@ -80,7 +99,7 @@ namespace Grupp2Inlämn
 			}
 		}
 	
-		void kundMeny()
+		void kundMeny(long pNr)
 		{
 
 			int menuChoice = 0;
@@ -95,6 +114,8 @@ namespace Grupp2Inlämn
 				Console.WriteLine("5. Do thing E");
 				Console.WriteLine("6. Do thing F");
 				Console.WriteLine("7. EXIT");
+
+				menuChoice = int.Parse(Console.ReadLine());
 
 				switch (menuChoice)
 				{
@@ -144,7 +165,11 @@ namespace Grupp2Inlämn
 				switch (menuChoice)
 				{
 					case 1:
-						kundMeny();
+						long pNr = UseAccount();
+                        if (pNr != -1)
+                        {
+							kundMeny(pNr);
+						}
 						break;
 					case 2:
 						AddCustomer();
@@ -173,17 +198,7 @@ namespace Grupp2Inlämn
 		public static void Main(string[] args)
 		{
 			Program p = new Program();
-			p.AddCustomer();
-			//p.AddCustomer();
-            Console.WriteLine("Alla Kunder i banken:");
-			p.bl.GetCustomers().ForEach(Console.WriteLine);
-			
-			p.AddAccount(123);
-			p.bl.GetCustomer(123).ForEach(Console.WriteLine);
-
-			p.CloseAccount(123);
-
-			p.bl.GetCustomer(123).ForEach(Console.WriteLine);
+			p.bankMeny();
 
 		}
 	}

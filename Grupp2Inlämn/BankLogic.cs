@@ -73,7 +73,7 @@ informationen om kundens konton.*/
 			//Steg 1 söka igenom this.customer listan efter matchande personnummer. 
 			//Steg 2 lägger in all information i en lista.
 			//Steg 3 returnera listan.
-			List<string> customerInfo = new List<string>();
+			List<string> customerInfo = null;
 			foreach (Customer cust in this.Customers)
             {
                 if (Personnummmer == cust.getPersonnummer())
