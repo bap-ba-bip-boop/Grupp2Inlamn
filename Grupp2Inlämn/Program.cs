@@ -10,6 +10,16 @@ namespace Grupp2Inlämn
 		{
 			bl = new BankLogic();
 		}
+		public void CloseAccount(long personNummer)
+        {
+			Console.WriteLine("Ange det Kontonummer som ska avslutas");
+            Console.WriteLine("Kontonummer: ");
+			int kontonummer = int.Parse(Console.ReadLine());
+
+			string closeAccountResult = bl.CloseAccount(personNummer, kontonummer);
+
+            Console.WriteLine(closeAccountResult != null ? closeAccountResult : "Kontonummret som skrevs in är ej korrekt");
+        }
 		public void RemoveCustomer()
         {
 			Console.WriteLine("Ange personnummer på kunden som ska tas bort.");
