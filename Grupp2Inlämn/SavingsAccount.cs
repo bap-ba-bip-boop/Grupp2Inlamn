@@ -36,15 +36,15 @@ namespace Grupp2Inlämn
         {
             return this.AccountNr;
         }
-        public decimal GetInterest() // Returnar räntan till användaren(till BankLogic). ränta i kr
+        public decimal GetInterest()
         {
             return this.Amount * this.Interest / ((decimal)100.0);
         }
-        public string GetInfo() // Returnerar parametrarna i följande ordning (kontonummer, saldo, kontotyp, räntesats).
+        public string GetInfo()
         {
             return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + " kr, Account Type: " + this.AccountType + ", Interest Rate: " + this.Interest + " %";
         }
-        public string GetInfoWithInterest() // Returnerar parametrarna i följande ordning (kontonummer, saldo, kontotyp, räntesats).
+        public string GetInfoWithInterest()
         {
             return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + " kr, Account Type: "
                 + this.AccountType + ", Interest Rate: " + this.GetInterest() + " kr";
