@@ -161,7 +161,7 @@ namespace Grupp2Inlämn
 		
 		public void PrintToTextFile()
         {
-			string path = @"test.txt";
+			string path = @"customers.txt";
 
 			File.WriteAllLines(path, this.Customers.Select(customer => customer.GetInfo()));
 		}

@@ -148,6 +148,11 @@ namespace Grupp2Inlämn
 				Console.WriteLine("Belopp fel eller kontonummer ej hittat");
 			}
 		}
+		public void PrintToTextFile()
+        {
+			bL.PrintToTextFile();
+            Console.WriteLine("All kundinfo har exporterats till 'customers.txt'");
+        }
 
 		void KundMeny(long pNum)
 		{
@@ -201,15 +206,16 @@ namespace Grupp2Inlämn
 		void BankMeny()
 		{
 			int menuChoice = 0;
-			while (menuChoice != 5)
+			while (menuChoice != 6)
 			{
 				Console.WriteLine("Bank Meny");
 				Console.WriteLine("Välj Ett Alternativ:");
-				Console.WriteLine("1. Välj konto:");
+				Console.WriteLine("1. Välj Konto:");
 				Console.WriteLine("2. Lägg Till Kund");
-				Console.WriteLine("3. Ta bort kund");
-				Console.WriteLine("4. Skriv ut kundlista");
-				Console.WriteLine("5. EXIT");
+				Console.WriteLine("3. Ta Bort Kund");
+				Console.WriteLine("4. Skriv Ut Kundlista");
+                Console.WriteLine("5. Exportera Till Textfil");
+				Console.WriteLine("6. EXIT");
 
 				menuChoice = int.Parse(Console.ReadLine());
 
@@ -229,9 +235,12 @@ namespace Grupp2Inlämn
 						RemoveCustomer();
 						break;
 					case 4:
-						PrintAllCustomers();
+						PrintAllCustomers(); 
 						break;
 					case 5:
+						PrintToTextFile();
+						break;
+					case 6:
 						break;
 					default:
 						Console.WriteLine("Felaktigt Alternativ!");
