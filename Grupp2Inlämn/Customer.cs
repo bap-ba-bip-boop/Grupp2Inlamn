@@ -12,7 +12,6 @@ namespace Grupp2Inlämn
 
         public bool ChangeName(string newName)
         {
-            //håller koll så att inga tomma strings assignas till Name
             bool stringIsEmpty = false;
             if (newName == "")
             {
@@ -31,7 +30,6 @@ namespace Grupp2Inlämn
 
         public List<string> RemoveAllAccounts()
         {
-            //1.samlar all info alla accounts
             List<string> infoAboutAccounts = new List<string>();
 
             infoAboutAccounts.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
@@ -47,8 +45,6 @@ namespace Grupp2Inlämn
 
         public List<string> GetInfoOnAllAccounts()
         {
-            //returnerar Customers info i fomr av pNummer och för- och efternamn
-            //följt avv alla dennes bankkonton
             List<string> returnInformation = new List<string>();
             returnInformation.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
 
@@ -62,7 +58,6 @@ namespace Grupp2Inlämn
 
         public int AddAccount()
         {
-            //Lägger till ett nytt konto i listOfAccounts or returnerar det nya kontots AccountID
             SavingsAccount newAccount = new SavingsAccount();
             this.ListOfAccounts.Add(newAccount);
             return newAccount.GetAccountID();
