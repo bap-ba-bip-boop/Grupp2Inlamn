@@ -67,31 +67,6 @@ namespace Grupp2Inlämn
             this.ListOfAccounts.Add(newAccount);
             return newAccount.GetAccountID();
         }
-        //public string removeAccount(int accountID)
-        //{
-        //    //1. finna ett account med rätt ID, om det finns. Annars returnerar vi null 
-        //    //2. ifall vi finner ett account med rätt id, tar vi bort det och returnerar vi a 
-        //
-        //    string infoAboutAccount = null;
-        //
-        //    foreach (SavingsAccount account in this.listOfAccounts)
-        //    {
-        //        if(account.getAccountID() == accountID)
-        //        {
-        //            infoAboutAccount = account.getInfo();
-        //            this.listOfAccounts.Remove(account);
-        //            break;
-        //        }
-        //    }
-        //    return infoAboutAccount;
-        //}
-        //public Customer()
-        //{ 
-        //    this.Name = "John Doe";
-        //    this.Personnummer = 1234567890;
-        //    this.listOfAccounts = new List<SavingsAccount>();
-
-        //}
         public long GetPersonnummer()
         {
             return this.Personnummer;
@@ -126,7 +101,6 @@ namespace Grupp2Inlämn
             {
                 if (accountID == account.GetAccountID())
                 {
-                    //account.deposit(Amount);
                     accountFound = account.Deposit(amount);
                 }
             }
