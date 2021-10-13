@@ -162,7 +162,7 @@ namespace Grupp2Inlämn
 				Console.WriteLine("4. Hämta info om ett konto");
 				Console.WriteLine("5. Hämta info om alla konton");
 				Console.WriteLine("6. Sätt in pengar");
-				Console.WriteLine("7. hämta pengar");
+				Console.WriteLine("7. Ta ut pengar");
 				Console.WriteLine("8. EXIT");
 
 				menuChoice = int.Parse(Console.ReadLine());
