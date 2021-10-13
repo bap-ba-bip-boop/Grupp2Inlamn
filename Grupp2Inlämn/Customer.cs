@@ -127,7 +127,7 @@ namespace Grupp2Inlämn
                 if (accountID == account.GetAccountID())
                 {
                     //account.deposit(Amount);
-                    accountFound = account.deposit(amount);
+                    accountFound = account.Deposit(amount);
                 }
             }
             return accountFound;
@@ -139,7 +139,7 @@ namespace Grupp2Inlämn
             {
                 if (accountID == account.GetAccountID())
                 {
-                    accountFound = account.withdraw(amount);
+                    accountFound = account.Withdraw(amount);
                 }
             }
             return accountFound;
