@@ -18,11 +18,11 @@ namespace Grupp2Inlämn
 			long personNummer = long.Parse(Console.ReadLine());
 			List<string> customers = bL.GetCustomer(personNummer);
 
-			if(customers != null) // Customers innehåller info, dvs att det finns en kund med det personnummret
+			if(customers != null)
             {
                 Console.WriteLine("Personnummret matchar! Välkommern till Kund Menyn");
             }
-            else // Customers innehåller inte någon info, dvs att det inte en matchande kund till personnummret
+            else
             {
                 Console.WriteLine("Det finns ingen kund med det angivna personnummret.");
 				personNummer = -1;
@@ -52,19 +52,18 @@ namespace Grupp2Inlämn
 			long personNummer = long.Parse(Console.ReadLine());
 			List<string> removedCustomerInfo = bL.RemoveCustomer(personNummer);
 
-			if (removedCustomerInfo != null)// vi har funnit en kund med matchande personNummer
+			if (removedCustomerInfo != null)
 			{
 				Console.WriteLine("Info om Kund Som tagits bort:.");
 				removedCustomerInfo.ForEach(Console.WriteLine);
 			}
-			else//vi hittade inte en kund med matchande personnummer
+			else
 			{
 				Console.WriteLine("Det finns ingen kund med det personnummret");
 			}
 		}
 		public void PrintAllCustomers()
         {
-
 			List<string> customers = bL.GetCustomers();
 			foreach (var cust in customers)
 			{
@@ -78,7 +77,6 @@ namespace Grupp2Inlämn
             {
 				Console.WriteLine(accounts);
             }
-
 		}
 
 		public void AddCustomer()
@@ -89,7 +87,6 @@ namespace Grupp2Inlämn
 			Console.Write("Personnummer: ");
 			long personNummer = long.Parse(Console.ReadLine());
 			bL.AddCustomer(name, personNummer);
-
 		}
 
 		public void ChangeName(long personNummer)
@@ -98,11 +95,11 @@ namespace Grupp2Inlämn
 			Console.Write("Nytt namn: ");
 			string name = Console.ReadLine();
 			bool succesfulNameChange = bL.ChangeCustomerName(name, personNummer); ;
-			if (succesfulNameChange == true)// vi har funnit en kund med matchande personNummer
+			if (succesfulNameChange == true)
 			{
 				Console.WriteLine("Namnet ändrades");
 			}
-			else//vi hittade inte en kund med matchande personnummer
+			else
 			{
 				Console.WriteLine("Det finns ingen kund med det personnummret");
 			}
@@ -154,7 +151,6 @@ namespace Grupp2Inlämn
 
 		void KundMeny(long pNum)
 		{
-
 			int menuChoice = 0;
 			while (menuChoice != 8)
 			{
