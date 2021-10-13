@@ -13,7 +13,7 @@ namespace Grupp2Inlämn
 		}
 		public static void MockData(BankLogic bL)
         {
-            string txtFile = @"C:\Users\katar\source\repos\bap-ba-bip-boop\Grupp2Inlamn\Grupp2Inlämn\bin\Debug\netcoreapp3.1\customers.txt";
+            string txtFile = @"customers.txt";
 			List<string> rawData = new List<string>(File.ReadAllLines(txtFile));
 
 			rawData.RemoveAll(s => s == "");
