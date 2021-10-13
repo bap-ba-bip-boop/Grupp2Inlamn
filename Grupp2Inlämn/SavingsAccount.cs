@@ -42,12 +42,12 @@ namespace Grupp2Inlämn
         }
         public string GetInfo()
         {
-            return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + " kr, Account Type: " + this.AccountType + ", Interest Rate: " + this.Interest + " %";
+            return "Kontonummer: " + this.AccountNr + ", Summa: " + this.Amount + " kr, Kontotyp: " + this.AccountType + ", Sparränta: " + this.Interest + " %";
         }
         public string GetInfoWithInterest()
         {
-            return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + " kr, Account Type: "
-                + this.AccountType + ", Interest Rate: " + this.GetInterest() + " kr";
+            return "Kontonummer: " + this.AccountNr + ", Summa: " + this.Amount + " kr, Kontotyp: "
+                + this.AccountType + ", Sparränta: " + this.GetInterest() + " kr";
         }
         public SavingsAccount()
         {
