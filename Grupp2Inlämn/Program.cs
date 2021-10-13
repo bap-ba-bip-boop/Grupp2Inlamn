@@ -31,8 +31,8 @@ namespace Grupp2Inlämn
 		{
 			Console.WriteLine("Skriv in personnummer för att logga in.");
 			Console.WriteLine("Personnummer: ");
-			long personNummer = long.Parse(Console.ReadLine());
-			List<string> customers = bL.GetCustomer(personNummer);
+			long personnummer = long.Parse(Console.ReadLine());
+			List<string> customers = bL.GetCustomer(personnummer);
 
 			if(customers != null)
             {
@@ -41,41 +41,41 @@ namespace Grupp2Inlämn
             else
             {
                 Console.WriteLine("Det finns ingen kund med det angivna personnummret.");
-				personNummer = -1;
+				personnummer = -1;
             }
-			return personNummer;
+			return personnummer;
 		}
 
-		public void AddAccount(long personNummer)
+		public void AddAccount(long personnummer)
         {
-			int newAccountID = bL.AddSavingsAccount(personNummer);
+			int newAccountID = bL.AddSavingsAccount(personnummer);
             Console.WriteLine("Ditt nya konto har ID: {0}", newAccountID);
 		}
-		public void CloseAccount(long personNummer)
+		public void CloseAccount(long personnummer)
 		{
-			Console.WriteLine("Ange det Kontonummer som ska avslutas");
+			Console.WriteLine("Ange det kontonummer som ska avslutas");
             Console.Write("Kontonummer: ");
-			int kontoNummer = int.Parse(Console.ReadLine());
+			int kontonummer = int.Parse(Console.ReadLine());
 
-			string closeAccountResult = bL.CloseAccount(personNummer, kontoNummer);
+			string closeAccountResult = bL.CloseAccount(personnummer, kontonummer);
 
-            Console.WriteLine(closeAccountResult != null ? "Det Avslutade Kontot: " + closeAccountResult : "Kontonummret som skrevs in är ej korrekt");
+            Console.WriteLine(closeAccountResult != null ? "Det avslutade kontot: " + closeAccountResult : "Kontonumret som skrevs in är ej korrekt");
         }
 		public void RemoveCustomer()
 		{
-			Console.WriteLine("Ange personnummer på kunden som ska tas bort.");
+			Console.WriteLine("Ange personnummer på kunden som ska tas bort");
 			Console.Write("Personnummer: ");
-			long personNummer = long.Parse(Console.ReadLine());
-			List<string> removedCustomerInfo = bL.RemoveCustomer(personNummer);
+			long personnummer = long.Parse(Console.ReadLine());
+			List<string> removedCustomerInfo = bL.RemoveCustomer(personnummer);
 
 			if (removedCustomerInfo != null)
 			{
-				Console.WriteLine("Info om Kund Som tagits bort:.");
+				Console.WriteLine("Info om kund som tagits bort:");
 				removedCustomerInfo.ForEach(Console.WriteLine);
 			}
 			else
 			{
-				Console.WriteLine("Det finns ingen kund med det personnummret");
+				Console.WriteLine("Det finns ingen kund med det personnumret");
 			}
 		}
 		public void PrintAllCustomers()
@@ -86,9 +86,9 @@ namespace Grupp2Inlämn
 				Console.WriteLine(cust);
 			}
         }
-		public void CustomerAccounts(long personNummer)
+		public void CustomerAccounts(long personnummer)
 		{
-			List<string> allAccounts = bL.GetCustomer(personNummer);
+			List<string> allAccounts = bL.GetCustomer(personnummer);
             foreach (var accounts in allAccounts)
             {
 				Console.WriteLine(accounts);
@@ -101,59 +101,59 @@ namespace Grupp2Inlämn
 			Console.Write("Namn: ");
 			string name = Console.ReadLine();
 			Console.Write("Personnummer: ");
-			long personNummer = long.Parse(Console.ReadLine());
-			bL.AddCustomer(name, personNummer);
+			long personnummer = long.Parse(Console.ReadLine());
+			bL.AddCustomer(name, personnummer);
 		}
 
-		public void ChangeName(long personNummer)
+		public void ChangeName(long personnummer)
 		{
-			Console.WriteLine("Ange det nya namnet och personnummer till kund");
+			Console.WriteLine("Ange det nya namnet och personnummer till kunden");
 			Console.Write("Nytt namn: ");
 			string name = Console.ReadLine();
-			bool succesfulNameChange = bL.ChangeCustomerName(name, personNummer); ;
+			bool succesfulNameChange = bL.ChangeCustomerName(name, personnummer); ;
 			if (succesfulNameChange == true)
 			{
 				Console.WriteLine("Namnet ändrades");
 			}
 			else
 			{
-				Console.WriteLine("Det finns ingen kund med det personnummret");
+				Console.WriteLine("Det finns ingen kund med det personnumret");
 			}
 		}
 
-		public void GetAccount(long personNummer)
+		public void GetAccount(long personnummer)
 		{
-			Console.WriteLine("Ange det kontonummret ni vill komma åt.");
+			Console.WriteLine("Ange det kontonumret ni vill komma åt.");
 			Console.Write("Kontonummer: ");
-			int kontoNummer = int.Parse(Console.ReadLine());
+			int kontonummer = int.Parse(Console.ReadLine());
 
-			string accountInfo = bL.GetAccount(personNummer, kontoNummer);
+			string accountInfo = bL.GetAccount(personnummer, kontonummer);
 
-			Console.WriteLine(accountInfo != null ? accountInfo : "Kontonummret som skrevs in är ej korrekt");
+			Console.WriteLine(accountInfo != null ? accountInfo : "Kontonumret som skrevs in är ej korrekt");
 		}
 
-		public void Deposit(long personNummer)
+		public void Deposit(long personnummer)
 		{
-			Console.WriteLine("Ange det kontonummret ni vill lägga in pengar på.");
+			Console.WriteLine("Ange det kontonumret ni vill sätta in pengar på.");
 			Console.Write("Kontonummer: ");
 			int kontoNummer = int.Parse(Console.ReadLine());
 
-			Console.WriteLine("Hur mycket pengar vill ni lägga in?");
-			Console.Write("Antal i kr: ");
+			Console.WriteLine("Vilket belopp vill ni sätta in?");
+			Console.Write("Belopp i kr: ");
 			int antalPengar = int.Parse(Console.ReadLine());
 
-			bool successfulTransaction = bL.Deposit(kontoNummer, personNummer, antalPengar);
+			bool successfulTransaction = bL.Deposit(kontoNummer, personnummer, antalPengar);
 
 			Console.WriteLine(successfulTransaction ? "Transaktionen lyckades" : "Transaktionen misslyckades");
 		}
 
-		public void Withdraw(long personNummer) 
+		public void Withdraw(long personnummer) 
 		{
 			Console.WriteLine("Ange kontonummer:");
 			int accountId = int.Parse(Console.ReadLine());
-			Console.WriteLine("Skriv in önskat belopp");
+			Console.WriteLine("Skriv in önskat belopp:");
 			decimal amount = decimal.Parse(Console.ReadLine());
-			bool amountOk = bL.Withdraw(accountId, personNummer, amount);
+			bool amountOk = bL.Withdraw(accountId, personnummer, amount);
 			
 			if (amountOk == true)
 			{
@@ -175,11 +175,11 @@ namespace Grupp2Inlämn
 			int menuChoice = 0;
 			while (menuChoice != 8)
 			{
-				Console.WriteLine("Kund Meny");
-				Console.WriteLine("Välj Ett Alternativ:");
-				Console.WriteLine("1. Ändra Kundens Namn");
-				Console.WriteLine("2. Skapa Sparkonto");
-				Console.WriteLine("3. Avsluta Konto");
+				Console.WriteLine("Kundmeny");
+				Console.WriteLine("Välj ett alternativ:");
+				Console.WriteLine("1. Ändra kundens namn");
+				Console.WriteLine("2. Skapa sparkonto");
+				Console.WriteLine("3. Avsluta konto");
 				Console.WriteLine("4. Hämta info om ett konto");
 				Console.WriteLine("5. Hämta info om alla konton");
 				Console.WriteLine("6. Sätt in pengar");
@@ -214,7 +214,7 @@ namespace Grupp2Inlämn
 					case 8:
 						break;
 					default:
-						Console.WriteLine("Felaktigt Alternativ!");
+						Console.WriteLine("Felaktigt alternativ!");
 						break;
 				}
 			}
@@ -224,13 +224,13 @@ namespace Grupp2Inlämn
 			int menuChoice = 0;
 			while (menuChoice != 6)
 			{
-				Console.WriteLine("Bank Meny");
-				Console.WriteLine("Välj Ett Alternativ:");
-				Console.WriteLine("1. Välj Konto:");
-				Console.WriteLine("2. Lägg Till Kund");
-				Console.WriteLine("3. Ta Bort Kund");
-				Console.WriteLine("4. Skriv Ut Kundlista");
-                Console.WriteLine("5. Exportera Till Textfil");
+				Console.WriteLine("Bankmeny");
+				Console.WriteLine("Välj ett alternativ:");
+				Console.WriteLine("1. Välj kund");
+				Console.WriteLine("2. Lägg till kund");
+				Console.WriteLine("3. Ta bort kund");
+				Console.WriteLine("4. Skriv ut kundlista");
+                Console.WriteLine("5. Exportera till textfil");
 				Console.WriteLine("6. EXIT");
 
 				menuChoice = int.Parse(Console.ReadLine());
@@ -259,7 +259,7 @@ namespace Grupp2Inlämn
 					case 6:
 						break;
 					default:
-						Console.WriteLine("Felaktigt Alternativ!");
+						Console.WriteLine("Felaktigt alternativ!");
 						break;
 				}
 			}

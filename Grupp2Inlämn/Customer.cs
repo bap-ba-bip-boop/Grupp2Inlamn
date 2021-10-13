@@ -25,14 +25,14 @@ namespace Grupp2Inlämn
         }
         public string GetInfo()
         {
-            return "Personal ID: " + this.Personnummer + ", Full Name: " + this.Name + "\n";
+            return "Personnummer: " + this.Personnummer + ", Namn: " + this.Name + "\n";
         }
 
         public List<string> RemoveAllAccounts()
         {
             List<string> infoAboutAccounts = new List<string>();
 
-            infoAboutAccounts.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
+            infoAboutAccounts.Add("Personnummer: " + this.Personnummer + ", Namn: " + this.Name);
 
             foreach (SavingsAccount account in this.ListOfAccounts)
             {
@@ -46,7 +46,7 @@ namespace Grupp2Inlämn
         public List<string> GetInfoOnAllAccounts()
         {
             List<string> returnInformation = new List<string>();
-            returnInformation.Add("Personal ID: " + this.Personnummer + ", Full Name: " + this.Name);
+            returnInformation.Add("Personnummer: " + this.Personnummer + ", Namn: " + this.Name);
 
             foreach (SavingsAccount account in this.ListOfAccounts)
             {
@@ -67,10 +67,10 @@ namespace Grupp2Inlämn
             return this.Personnummer;
         }
 
-        public Customer(string name, long personNummer)
+        public Customer(string name, long personnummer)
         {
             this.Name = name;
-            this.Personnummer = personNummer;
+            this.Personnummer = personnummer;
             this.ListOfAccounts = new List<SavingsAccount>();
 
         }
