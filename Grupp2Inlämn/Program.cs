@@ -186,7 +186,11 @@ namespace Grupp2Inlämn
 				Console.WriteLine("7. Ta ut pengar");
 				Console.WriteLine("8. EXIT");
 
-				menuChoice = int.Parse(Console.ReadLine());
+				try
+				{
+					menuChoice = int.Parse(Console.ReadLine());
+				}
+				catch (Exception){ }
 
 				switch (menuChoice)
 				{
@@ -232,8 +236,11 @@ namespace Grupp2Inlämn
 				Console.WriteLine("4. Skriv Ut Kundlista");
                 Console.WriteLine("5. Exportera Till Textfil");
 				Console.WriteLine("6. EXIT");
-
-				menuChoice = int.Parse(Console.ReadLine());
+                try
+                {
+					menuChoice = int.Parse(Console.ReadLine());
+                }
+                catch (Exception) { }
 
 				switch (menuChoice)
 				{
