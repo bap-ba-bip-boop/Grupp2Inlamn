@@ -11,6 +11,22 @@ namespace Grupp2Inlämn
 		{
 			bL = new BankLogic();
 		}
+		public static void MockData(BankLogic bL)
+        {
+            string txtFile = @"C:\Users\katar\source\repos\bap-ba-bip-boop\Grupp2Inlamn\Grupp2Inlämn\bin\Debug\netcoreapp3.1\customers.txt";
+			List<string> rawData = new List<string>(File.ReadAllLines(txtFile));
+
+			rawData.RemoveAll(s => s == "");
+            foreach (string row in rawData)
+            {
+				string name = row.Substring(row.LastIndexOf(":")+2);
+				int a = row.IndexOf(":")+1;
+				int b = row.IndexOf(",");
+				int lenght = b - a;
+				string personID = row.Substring(a,lenght);
+				bL.AddCustomer(name, long.Parse(personID));
+            }
+		}
 		public long UserAccount()
 		{
 			Console.WriteLine("Skriv in personnummer för att logga in.");
@@ -252,9 +268,10 @@ namespace Grupp2Inlämn
 		public static void Main(string[] args)
 		{
 			Program p = new Program();
-			p.BankMeny();
-
+			MockData(p.bL);
+            p.BankMeny();
 		}
 	}
 }
+
 
