@@ -6,16 +6,13 @@ namespace Grupp2Inlämn
 {
     class SavingsAccount
     {
-        //instansvariabel
         private decimal Amount;
         private decimal Interest;
         private string AccountType;
         private int AccountNr;
 
-        //klassvariabel
         private static int AccountPool = 1001;
-
-        public bool deposit(decimal depositAmount)
+        public bool Deposit(decimal depositAmount)
         {
             bool correctAmount = false;
             if (depositAmount > 0)
@@ -24,13 +21,8 @@ namespace Grupp2Inlämn
                 correctAmount = true;
             }
             return correctAmount;
-            //kod deposit
-            /*     this.Amount += depositAmount;
-                 Console.WriteLine("You deposited {0}kr", depositAmount);
-                 Console.WriteLine("Your current saldo is now {0}kr", this.Amount);*/
-
         }
-        public bool withdraw(decimal withdrawAmount)
+        public bool Withdraw(decimal withdrawAmount)
         {
             bool correctAmount = false;
             if (withdrawAmount > 0 && withdrawAmount <= this.Amount)
@@ -39,35 +31,24 @@ namespace Grupp2Inlämn
                 correctAmount = true;
             }
             return correctAmount;
-            //kod för withdrawl
-            // this.Amount -= withdrawlAmount;
-            //Console.WriteLine("You withdrew {0}kr", withdrawlAmount);
-            //Console.WriteLine("Your current saldo is now {0}kr", this.Amount);
         }
         public int GetAccountID()
         {
-            //returnar AccountNr till användaren(i detta fall BankLogic)
             return this.AccountNr;
         }
-        public decimal getInterest()
+        public decimal GetInterest() // Returnar räntan till användaren(till BankLogic). ränta i kr
         {
-            //returnar räntan till användaren(till BankLogic). ränta i kr
             return this.Amount * this.Interest / ((decimal)100.0);
         }
-        public string GetInfo()
+        public string GetInfo() // Returnerar parametrarna i följande ordning (kontonummer, saldo, kontotyp, räntesats).
         {
-            //returnerar parametrarna i följande ordning
-            //(kontonummer, saldo, kontotyp, räntesats).
             return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + " kr, Account Type: " + this.AccountType + ", Interest Rate: " + this.Interest + " %";
         }
-        public string GetInfoWithInterest()
+        public string GetInfoWithInterest() // Returnerar parametrarna i följande ordning (kontonummer, saldo, kontotyp, räntesats).
         {
-            //returnerar parametrarna i följande ordning
-            //(kontonummer, saldo, kontotyp, räntesats).
             return "Account ID: " + this.AccountNr + ", Amount: " + this.Amount + " kr, Account Type: "
-                + this.AccountType + ", Interest Rate: " + this.getInterest() + " kr";
+                + this.AccountType + ", Interest Rate: " + this.GetInterest() + " kr";
         }
-
         public SavingsAccount()
         {
             this.AccountNr = AccountPool++; ;
