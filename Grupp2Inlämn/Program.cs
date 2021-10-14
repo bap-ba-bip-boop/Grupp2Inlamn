@@ -132,13 +132,24 @@ namespace Grupp2Inlämn
 			/*
 			1. Ber användaren att skriva ett namn till kunden och personnummer till den nya kunden
 			2. antar att den data som användaren skickar in är korrekt och Anropar BankLogic.AddCustomer 
-			*/
+			3. ifall BankLogic.AddCustomer returnerar false betyder det att det redan fanns en kund med det personnumret. Användaren meddelas om detta
+			4. ifall BankLogic.AddCustomer returnerar true betyder det att det personnumret inte fanns i kundlistan. Då skapas kunden och även ett konto tillhörande den kunden
+			 */
 			Console.WriteLine("Ange namn och personnummer.");
 			Console.Write("Namn: ");
 			string name = Console.ReadLine();
 			Console.Write("Personnummer: ");
 			long personnummer = long.Parse(Console.ReadLine());
-			bL.AddCustomer(name, personnummer);
+			if (bL.AddCustomer(name, personnummer))
+			{
+				bL.AddSavingsAccount(personnummer);
+                Console.WriteLine("En ny kund har lagts till och ett konto har skapats åt dem");
+			}
+			else
+            {
+                Console.WriteLine("En ny kund har inte lagts till då personnummret redan finns");
+            }
+
 		}
 
 		public void ChangeName(long personnummer)
